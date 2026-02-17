@@ -63,6 +63,7 @@
 | INF-008 | **Staging gateway DNS** — Create `stg-s2.dropsa.com` endpoint for test devices / *DNS gateway staging — Creare endpoint `stg-s2.dropsa.com` per device di test* | TO DO |
 | INF-009 | **Test device pool** — Yan prepares 5-10 devices, register MAC addresses for staging / *Pool device test — Yan prepara 5-10 device, registra MAC address per staging* | WAITING (Yan) |
 | INF-010 | **Auto-provisioning on staging** — New gateway accepts unknown devices on stg only / *Auto-provisioning su staging — Il nuovo gateway accetta device sconosciuti solo su stg* | BLOCKED by GW-001 |
+| INF-011 | **Device Pool Manager on EngHelper** — Web panel to register test device MAC addresses, auto-sync to staging gateway/DB / *Pannello web su EngHelper per registrare MAC address device test, sync automatico verso gateway/DB staging* | TO DO |
 
 ---
 
