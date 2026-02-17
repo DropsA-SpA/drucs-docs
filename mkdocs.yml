@@ -95,5 +95,7 @@ nav:
     - Getting Started: field/index.md
     - Request a Feature: field/feature-request.md
     - Report an Issue: field/report-issue.md
+  - Backlog:
+    - Pending Requests & Fixes: backlog/index.md
   - Dashboard:
     - DRUCS v2: dashboard/index.md
