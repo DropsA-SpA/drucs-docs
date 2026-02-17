@@ -60,6 +60,9 @@
 | INF-005 | **API documentation** — Currently empty, needs full spec / *Documentazione API — Attualmente vuota, serve specifica completa* | BACKLOG |
 | INF-006 | **DB schema documentation** — No schema docs exist / *Documentazione schema DB — Non esiste documentazione schema* | BACKLOG |
 | INF-007 | Set `SEND_MAILS=false` on staging to prevent emails to real users / *Impostare `SEND_MAILS=false` su staging per evitare email a utenti reali* | TO DO |
+| INF-008 | **Staging gateway DNS** — Create `stg-s2.dropsa.com` endpoint for test devices / *DNS gateway staging — Creare endpoint `stg-s2.dropsa.com` per device di test* | TO DO |
+| INF-009 | **Test device pool** — Yan prepares 5-10 devices, register MAC addresses for staging / *Pool device test — Yan prepara 5-10 device, registra MAC address per staging* | WAITING (Yan) |
+| INF-010 | **Auto-provisioning on staging** — New gateway accepts unknown devices on stg only / *Auto-provisioning su staging — Il nuovo gateway accetta device sconosciuti solo su stg* | BLOCKED by GW-001 |
 
 ---
 
