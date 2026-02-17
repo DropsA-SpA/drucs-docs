@@ -1,9 +1,9 @@
 # Pending Requests & Fixes / *Richieste e Fix in Sospeso*
 
 !!! info "Last updated: 17 February 2026 / *Ultimo aggiornamento: 17 Febbraio 2026*"
-    This page tracks all open bugs, feature requests, and infrastructure tasks across the DRUCS platform.
+    This page tracks all open bugs, feature requests, and infrastructure tasks across the DRUCS platform. Firmware tasks synced from Jira (BC-1 to BC-47).
 
-    *Questa pagina traccia tutti i bug aperti, le richieste di funzionalita' e le attivita' infrastrutturali sulla piattaforma DRUCS.*
+    *Questa pagina traccia tutti i bug aperti, le richieste di funzionalita' e le attivita' infrastrutturali sulla piattaforma DRUCS. Task firmware sincronizzati da Jira (BC-1 a BC-47).*
 
 ---
 
@@ -69,11 +69,65 @@
 
 ## Firmware (BC Project) / *Firmware (Progetto BC)*
 
-| ID | Description / *Descrizione* | Owner | Status |
+### In Progress / *In Corso*
+
+| ID | Description / *Descrizione* | Owner | Priority |
 |---|---|---|---|
-| BC-45 | **Smart 4 refactor** — Major firmware restructure / *Refactor Smart 4 — Ristrutturazione firmware principale* | Yan | In Progress |
-| BC-FW060 | **Firmware v0.60** — Next release / *Firmware v0.60 — Prossima release* | Yan | To Do |
-| BC-FW059 | Firmware v0.59 — Current release in testing / *Firmware v0.59 — Release corrente in test* | Yan | Testing |
+| **BC-41** | **STG TCP socket error found on V0.58** | Yan | Medium |
+| **BC-42** | **Bluetooth App validation missing in FW v0.58** | Yan | Medium |
+| **BC-45** | **Smart 4 Refactor** — Major firmware restructure / *Ristrutturazione firmware principale* | Yan | **HIGH** |
+| **BC-47** | **Check Rotation Sensor Switch implementation** | Yan | **HIGH** |
+
+### Testing / *In Test*
+
+| ID | Description / *Descrizione* | Owner | Priority |
+|---|---|---|---|
+| BC-22 | Incorrect State Values for WiFi Menu Parameters (IDs 40050) | Fabio | Medium |
+| BC-26 | Motor overcurrent | Yan | Medium |
+| BC-29 | Smart 4.0 Digital New Feature | Yan | **HIGH** |
+| BC-30 | LCD: Cycle Pulses hidden issue | Yan | Medium |
+| BC-31 | Firmware fails to send alarm value in var 100016 via Bluetooth | Fabio | Medium |
+| BC-38 | Matrix: Bug fix on Bravo on SEP mode | Yan | Medium |
+| BC-39 | Release FW v0.59 | Yan | Medium |
+
+### To Do / *Da Fare*
+
+| ID | Description / *Descrizione* | Owner | Priority |
+|---|---|---|---|
+| BC-37 | Matrix Document: Correct Errors and add Matrix description | Yan | Medium |
+| BC-40 | **Release FW v0.60** | Yan | Medium |
+| BC-46 | Move all repositories from 'SebDropsa' GitHub account to DropsA-SpA org | Yan | Medium |
+
+### Backlog
+
+| ID | Description / *Descrizione* | Owner | Priority |
+|---|---|---|---|
+| BC-5 | TCP sockets ACKs are missed | Yan | Low |
+| BC-12 | Retrieve and display older event records | Yan | **HIGH** |
+| BC-14 | Settings changed on the Web do not sync to the phone | Yan | **HIGH** |
+| BC-16 | BLE disconnection during FW upgrading | Yan | Medium |
+| BC-18 | WiFi SSID and Password State "Error" | Yan | Medium |
+| BC-23 | System Optimization | Yan | Medium |
+| BC-24 | TOPLAND Touch Screen evaluation | Yan | Lowest |
+| BC-34 | ESP32 firmware disconnects after successful MTU 517 negotiation | Yan | **HIGH** |
+
+### Suspended / *Sospesi*
+
+| ID | Description / *Descrizione* | Owner | Priority |
+|---|---|---|---|
+| BC-25 | RTC timeout during Power off | Yan | Medium |
+| BC-27 | CANbus pause command does not stop timeout countdown | Yan | Medium |
+
+### Recently Completed / *Completati Recentemente*
+
+| ID | Description / *Descrizione* | Owner |
+|---|---|---|
+| BC-43 | LCD: Memory Leak in Parameter Converter | Yan |
+| BC-44 | Move Parameters from ADVANCES to BASE | Fabio |
+| BC-36 | ModBus communication debug | Yan |
+| BC-35 | Smart 4.0 Digital EMC FW prepare | Yan |
+| BC-33 | Add Bravo Compact firmware for staging environment to parallel test | Yan |
+| BC-32 | Revert QR code endpoint from www.dropsa.app to drucs.net | Yan |
 
 ---
 
