@@ -1,0 +1,1778 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DropsA IoT Platform — Technical Docs, Manuals & Roadmap">
+      
+      
+      
+        <link rel="canonical" href="https://enghelper.dropsa.net/docs/roadmap/">
+      
+      
+        <link rel="prev" href="../products/vipair/">
+      
+      
+        <link rel="next" href="releases/">
+      
+      
+        
+          <link rel="alternate" href="/docs/" hreflang="en">
+        
+          <link rel="alternate" href="/docs/it/" hreflang="it">
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Development Roadmap - DRUCS Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#development-roadmap-roadmap-di-sviluppo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <style>
+    .md-banner {
+      background-color: #2c5282;
+      color: white;
+    }
+    .md-banner a {
+      color: #90cdf4;
+    }
+  </style>
+  This documentation site is under active development — February 2026 /
+  Questo sito di documentazione e' in fase di sviluppo attivo — Febbraio 2026
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="DRUCS Documentation" class="md-header__button md-logo" aria-label="DRUCS Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 14.5s2 2.17 2 3.5a2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-1.33 2-3.5 2-3.5M5 18V9a2 2 0 0 1-2-2 2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1h8a2 2 0 0 1 2 2v4a1 1 0 0 1 1 1 1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1 1 1 0 0 1 1-1V9h-6v9h1a2 2 0 0 1 2 2v2H2v-2a2 2 0 0 1 2-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DRUCS Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Development Roadmap
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/docs/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/docs/it/" hreflang="it" class="md-select__link">
+              Italiano
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DropsA-SpA" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DropsA-SpA
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../platform/overview/" class="md-tabs__link">
+          
+  
+  
+  Platform
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../products/" class="md-tabs__link">
+          
+  
+  
+  Products
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Roadmap
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../field/" class="md-tabs__link">
+          
+  
+  
+  Field Engineers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../dashboard/" class="md-tabs__link">
+          
+  
+  
+  Dashboard
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="DRUCS Documentation" class="md-nav__button md-logo" aria-label="DRUCS Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 14.5s2 2.17 2 3.5a2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-1.33 2-3.5 2-3.5M5 18V9a2 2 0 0 1-2-2 2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1h8a2 2 0 0 1 2 2v4a1 1 0 0 1 1 1 1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1 1 1 0 0 1 1-1V9h-6v9h1a2 2 0 0 1 2 2v2H2v-2a2 2 0 0 1 2-2z"/></svg>
+
+    </a>
+    DRUCS Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DropsA-SpA" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DropsA-SpA
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../platform/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../platform/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../platform/variable-map/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variable Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Products
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Products
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../products/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../products/bravocompact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BravoCompact 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../products/bravo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bravo 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../products/smart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../products/silenttrack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SilentTrack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../products/vipair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VipAir 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roadmap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development Roadmap
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-status-february-2026-stato-attuale-febbraio-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Status (February 2026) / Stato Attuale (Febbraio 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-0-security-cleanup-complete-sicurezza-e-pulizia-completata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 0: Security &amp; Cleanup (COMPLETE) / Sicurezza e Pulizia (COMPLETATA)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-web-v2-dashboard-in-progress-dashboard-web-v2-in-corso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: Web v2 Dashboard (IN PROGRESS) / Dashboard Web v2 (IN CORSO)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1: Web v2 Dashboard (IN PROGRESS) / Dashboard Web v2 (IN CORSO)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#completed-completato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed / Completato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-prossimo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next / Prossimo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-device-detail-page-full-variable-display-settings-editor-event-history-pagina-dettaglio-dispositivo-visualizzazione-variabili-editor-impostazioni-storico-eventi-per-user-inactive-device-flag-flag-dispositivo-inattivo-per-utente-notifications-panel-in-app-pannello-notifiche-in-app-help-page-integration-embed-from-this-docs-site-integrazione-pagine-aiuto-incorporate-da-questo-sito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] Device detail page — full variable display, settings editor, event history / Pagina dettaglio dispositivo — visualizzazione variabili, editor impostazioni, storico eventi- [ ] Per-user "Inactive" device flag / Flag dispositivo "Inattivo" per utente- [ ] Notifications panel (in-app) / Pannello notifiche (in-app)- [ ] Help page integration (embed from this docs site) / Integrazione pagine aiuto (incorporate da questo sito)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-api-modernization-modernizzazione-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: API Modernization / Modernizzazione API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-new-rest-endpoints-for-v2-dashboard-needs-nuovi-endpoint-rest-per-le-esigenze-della-dashboard-v2-device-settings-readwrite-api-api-letturascrittura-impostazioni-dispositivo-event-history-with-filtering-and-pagination-storico-eventi-con-filtro-e-paginazione-user-preferences-api-per-user-device-flags-notification-settings-api-preferenze-utente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] New REST endpoints for v2 dashboard needs / Nuovi endpoint REST per le esigenze della dashboard v2- [ ] Device settings read/write API / API lettura/scrittura impostazioni dispositivo- [ ] Event history with filtering and pagination / Storico eventi con filtro e paginazione- [ ] User preferences API (per-user device flags, notification settings) / API preferenze utente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-protocol-bridge-bridge-protocollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3: Protocol Bridge / Bridge Protocollo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-evaluate-mqtt-broker-mosquitto-or-cloud-managed-valutare-broker-mqtt-build-protocol-bridge-translate-current-httpaes-to-mqtttls-costruire-bridge-protocollo-maintain-backward-compatibility-with-existing-devices-mantenere-compatibilita-con-dispositivi-esistenti-new-firmware-builds-to-support-mqtt-natively-nuove-build-firmware-per-supporto-mqtt-nativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] Evaluate MQTT broker (Mosquitto or cloud-managed) / Valutare broker MQTT- [ ] Build protocol bridge: translate current HTTP+AES to MQTT+TLS / Costruire bridge protocollo- [ ] Maintain backward compatibility with existing devices / Mantenere compatibilita' con dispositivi esistenti- [ ] New firmware builds to support MQTT natively / Nuove build firmware per supporto MQTT nativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-4-mobile-app-sync-sincronizzazione-app-mobile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4: Mobile App Sync / Sincronizzazione App Mobile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-replicate-web-v2-features-to-flutter-app-replicare-funzionalita-web-v2-nellapp-flutter-shared-api-same-backend-same-data-api-condivisa-stesso-backend-stessi-dati-embedded-help-pages-via-webview-pagine-aiuto-incorporate-tramite-webview-push-notifications-notifiche-push" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] Replicate web v2 features to Flutter app / Replicare funzionalita' web v2 nell'app Flutter- [ ] Shared API — same backend, same data / API condivisa — stesso backend, stessi dati- [ ] Embedded help pages via WebView / Pagine aiuto incorporate tramite WebView- [ ] Push notifications / Notifiche push
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-5-advanced-analytics-analisi-avanzata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5: Advanced Analytics / Analisi Avanzata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-predictive-maintenance-models-modelli-manutenzione-predittiva-fleet-level-analytics-and-reporting-analisi-e-reportistica-a-livello-flotta-lubricant-consumption-optimization-ottimizzazione-consumo-lubrificante-ai-assisted-troubleshooting-risoluzione-problemi-assistita-da-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] Predictive maintenance models / Modelli manutenzione predittiva- [ ] Fleet-level analytics and reporting / Analisi e reportistica a livello flotta- [ ] Lubricant consumption optimization / Ottimizzazione consumo lubrificante- [ ] AI-assisted troubleshooting / Risoluzione problemi assistita da AI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-request-features-come-richiedere-funzionalita" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Request Features / Come Richiedere Funzionalita'
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Field Engineers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Field Engineers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../field/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../field/feature-request/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Request a Feature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../field/report-issue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Report an Issue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dashboard
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DRUCS v2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#current-status-february-2026-stato-attuale-febbraio-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Current Status (February 2026) / Stato Attuale (Febbraio 2026)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-0-security-cleanup-complete-sicurezza-e-pulizia-completata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 0: Security &amp; Cleanup (COMPLETE) / Sicurezza e Pulizia (COMPLETATA)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-1-web-v2-dashboard-in-progress-dashboard-web-v2-in-corso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: Web v2 Dashboard (IN PROGRESS) / Dashboard Web v2 (IN CORSO)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Phase 1: Web v2 Dashboard (IN PROGRESS) / Dashboard Web v2 (IN CORSO)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#completed-completato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed / Completato
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-prossimo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next / Prossimo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-device-detail-page-full-variable-display-settings-editor-event-history-pagina-dettaglio-dispositivo-visualizzazione-variabili-editor-impostazioni-storico-eventi-per-user-inactive-device-flag-flag-dispositivo-inattivo-per-utente-notifications-panel-in-app-pannello-notifiche-in-app-help-page-integration-embed-from-this-docs-site-integrazione-pagine-aiuto-incorporate-da-questo-sito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] Device detail page — full variable display, settings editor, event history / Pagina dettaglio dispositivo — visualizzazione variabili, editor impostazioni, storico eventi- [ ] Per-user "Inactive" device flag / Flag dispositivo "Inattivo" per utente- [ ] Notifications panel (in-app) / Pannello notifiche (in-app)- [ ] Help page integration (embed from this docs site) / Integrazione pagine aiuto (incorporate da questo sito)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-2-api-modernization-modernizzazione-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: API Modernization / Modernizzazione API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-new-rest-endpoints-for-v2-dashboard-needs-nuovi-endpoint-rest-per-le-esigenze-della-dashboard-v2-device-settings-readwrite-api-api-letturascrittura-impostazioni-dispositivo-event-history-with-filtering-and-pagination-storico-eventi-con-filtro-e-paginazione-user-preferences-api-per-user-device-flags-notification-settings-api-preferenze-utente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] New REST endpoints for v2 dashboard needs / Nuovi endpoint REST per le esigenze della dashboard v2- [ ] Device settings read/write API / API lettura/scrittura impostazioni dispositivo- [ ] Event history with filtering and pagination / Storico eventi con filtro e paginazione- [ ] User preferences API (per-user device flags, notification settings) / API preferenze utente
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-3-protocol-bridge-bridge-protocollo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3: Protocol Bridge / Bridge Protocollo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-evaluate-mqtt-broker-mosquitto-or-cloud-managed-valutare-broker-mqtt-build-protocol-bridge-translate-current-httpaes-to-mqtttls-costruire-bridge-protocollo-maintain-backward-compatibility-with-existing-devices-mantenere-compatibilita-con-dispositivi-esistenti-new-firmware-builds-to-support-mqtt-natively-nuove-build-firmware-per-supporto-mqtt-nativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] Evaluate MQTT broker (Mosquitto or cloud-managed) / Valutare broker MQTT- [ ] Build protocol bridge: translate current HTTP+AES to MQTT+TLS / Costruire bridge protocollo- [ ] Maintain backward compatibility with existing devices / Mantenere compatibilita' con dispositivi esistenti- [ ] New firmware builds to support MQTT natively / Nuove build firmware per supporto MQTT nativo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-4-mobile-app-sync-sincronizzazione-app-mobile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4: Mobile App Sync / Sincronizzazione App Mobile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-replicate-web-v2-features-to-flutter-app-replicare-funzionalita-web-v2-nellapp-flutter-shared-api-same-backend-same-data-api-condivisa-stesso-backend-stessi-dati-embedded-help-pages-via-webview-pagine-aiuto-incorporate-tramite-webview-push-notifications-notifiche-push" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] Replicate web v2 features to Flutter app / Replicare funzionalita' web v2 nell'app Flutter- [ ] Shared API — same backend, same data / API condivisa — stesso backend, stessi dati- [ ] Embedded help pages via WebView / Pagine aiuto incorporate tramite WebView- [ ] Push notifications / Notifiche push
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-5-advanced-analytics-analisi-avanzata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5: Advanced Analytics / Analisi Avanzata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-predictive-maintenance-models-modelli-manutenzione-predittiva-fleet-level-analytics-and-reporting-analisi-e-reportistica-a-livello-flotta-lubricant-consumption-optimization-ottimizzazione-consumo-lubrificante-ai-assisted-troubleshooting-risoluzione-problemi-assistita-da-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        - [ ] Predictive maintenance models / Modelli manutenzione predittiva- [ ] Fleet-level analytics and reporting / Analisi e reportistica a livello flotta- [ ] Lubricant consumption optimization / Ottimizzazione consumo lubrificante- [ ] AI-assisted troubleshooting / Risoluzione problemi assistita da AI
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-request-features-come-richiedere-funzionalita" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Request Features / Come Richiedere Funzionalita'
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="development-roadmap-roadmap-di-sviluppo">Development Roadmap / Roadmap di Sviluppo<a class="headerlink" href="#development-roadmap-roadmap-di-sviluppo" title="Permanent link">&para;</a></h1>
+<h2 id="current-status-february-2026-stato-attuale-febbraio-2026">Current Status (February 2026) / Stato Attuale (Febbraio 2026)<a class="headerlink" href="#current-status-february-2026-stato-attuale-febbraio-2026" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Phase / <em>Fase</em></th>
+<th>Status / <em>Stato</em></th>
+<th>Description / <em>Descrizione</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Phase 0</strong></td>
+<td><strong>DONE</strong></td>
+<td><em>Security audit + access lockdown / Audit sicurezza + blocco accessi</em></td>
+</tr>
+<tr>
+<td><strong>Phase 1</strong></td>
+<td><strong>IN PROGRESS</strong></td>
+<td><em>Web v2 dashboard (React) / Dashboard web v2 (React)</em></td>
+</tr>
+<tr>
+<td><strong>Phase 2</strong></td>
+<td>Planned / <em>Pianificata</em></td>
+<td><em>API modernization + new endpoints / Modernizzazione API + nuovi endpoint</em></td>
+</tr>
+<tr>
+<td><strong>Phase 3</strong></td>
+<td>Planned / <em>Pianificata</em></td>
+<td><em>Protocol bridge (HTTP --&gt; MQTT) / Bridge protocollo</em></td>
+</tr>
+<tr>
+<td><strong>Phase 4</strong></td>
+<td>Future / <em>Futuro</em></td>
+<td><em>Mobile app feature sync / Sincronizzazione funzionalita' app mobile</em></td>
+</tr>
+<tr>
+<td><strong>Phase 5</strong></td>
+<td>Future / <em>Futuro</em></td>
+<td><em>Advanced analytics + AI / Analisi avanzata + AI</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-0-security-cleanup-complete-sicurezza-e-pulizia-completata">Phase 0: Security &amp; Cleanup (COMPLETE) / Sicurezza e Pulizia (COMPLETATA)<a class="headerlink" href="#phase-0-security-cleanup-complete-sicurezza-e-pulizia-completata" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[x] GitHub org audit — downgraded vendor access / <em>Audit org GitHub — declassato accesso fornitore</em>- [x] AWS IAM audit — deactivated unused keys / <em>Audit AWS IAM — disattivate chiavi non usate</em>- [x] Org default permissions set to read-only / <em>Permessi org predefiniti impostati a sola lettura</em>- [x] GitHub Teams created (Project Admins, Electronics, Management, Field Engineers)</li>
+<li>[x] Firmware repo migrated to DropsA-SpA org / <em>Repo firmware migrato nell'org DropsA-SpA</em>- [ ] Branch cleanup — 163 stale branches to delete / <em>Pulizia branch — 163 branch obsoleti da eliminare</em></li>
+</ul>
+<hr />
+<h2 id="phase-1-web-v2-dashboard-in-progress-dashboard-web-v2-in-corso">Phase 1: Web v2 Dashboard (IN PROGRESS) / Dashboard Web v2 (IN CORSO)<a class="headerlink" href="#phase-1-web-v2-dashboard-in-progress-dashboard-web-v2-in-corso" title="Permanent link">&para;</a></h2>
+<p>The new React-based dashboard replacing the Angular v1 frontend.</p>
+<p><em>La nuova dashboard basata su React che sostituisce il frontend Angular v1.</em></p>
+<h3 id="completed-completato">Completed / Completato<a class="headerlink" href="#completed-completato" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[x] Dark theme glass UI with readable text / <em>UI vetro tema scuro con testo leggibile</em>- [x] Clickable summary strip (Total/OK/Alarm/Warning/Inactive/Offline filters) / <em>Barra riepilogo cliccabile con filtri</em>- [x] Full-width device card list with status, level gauge, cycle counters / <em>Lista schede dispositivo a larghezza piena</em>- [x] Problems panel (alarm &gt;2h, offline &gt;24h detection) / <em>Pannello problemi (allarme &gt;2h, offline &gt;24h)</em>- [x] Predictive LubeOut (estimates when lubricant runs out) / <em>LubeOut predittivo (stima esaurimento lubrificante)</em>- [x] Status bar chart (7-day trend) / <em>Grafico barre stato (trend 7 giorni)</em>- [x] Hours/cycles metrics with VipAir micropump aggregation / <em>Metriche ore/cicli con aggregazione micropompe VipAir</em>- [x] Deployed to app.dropsa.app/v2/ / <em>Distribuito su app.dropsa.app/v2/</em></li>
+</ul>
+<h3 id="next-prossimo">Next / Prossimo<a class="headerlink" href="#next-prossimo" title="Permanent link">&para;</a></h3>
+<h2 id="-device-detail-page-full-variable-display-settings-editor-event-history-pagina-dettaglio-dispositivo-visualizzazione-variabili-editor-impostazioni-storico-eventi-per-user-inactive-device-flag-flag-dispositivo-inattivo-per-utente-notifications-panel-in-app-pannello-notifiche-in-app-help-page-integration-embed-from-this-docs-site-integrazione-pagine-aiuto-incorporate-da-questo-sito">- [ ] Device detail page — full variable display, settings editor, event history / <em>Pagina dettaglio dispositivo — visualizzazione variabili, editor impostazioni, storico eventi</em>- [ ] Per-user "Inactive" device flag / <em>Flag dispositivo "Inattivo" per utente</em>- [ ] Notifications panel (in-app) / <em>Pannello notifiche (in-app)</em>- [ ] Help page integration (embed from this docs site) / <em>Integrazione pagine aiuto (incorporate da questo sito)</em><a class="headerlink" href="#-device-detail-page-full-variable-display-settings-editor-event-history-pagina-dettaglio-dispositivo-visualizzazione-variabili-editor-impostazioni-storico-eventi-per-user-inactive-device-flag-flag-dispositivo-inattivo-per-utente-notifications-panel-in-app-pannello-notifiche-in-app-help-page-integration-embed-from-this-docs-site-integrazione-pagine-aiuto-incorporate-da-questo-sito" title="Permanent link">&para;</a></h2>
+<h2 id="phase-2-api-modernization-modernizzazione-api">Phase 2: API Modernization / Modernizzazione API<a class="headerlink" href="#phase-2-api-modernization-modernizzazione-api" title="Permanent link">&para;</a></h2>
+<h2 id="-new-rest-endpoints-for-v2-dashboard-needs-nuovi-endpoint-rest-per-le-esigenze-della-dashboard-v2-device-settings-readwrite-api-api-letturascrittura-impostazioni-dispositivo-event-history-with-filtering-and-pagination-storico-eventi-con-filtro-e-paginazione-user-preferences-api-per-user-device-flags-notification-settings-api-preferenze-utente">- [ ] New REST endpoints for v2 dashboard needs / <em>Nuovi endpoint REST per le esigenze della dashboard v2</em>- [ ] Device settings read/write API / <em>API lettura/scrittura impostazioni dispositivo</em>- [ ] Event history with filtering and pagination / <em>Storico eventi con filtro e paginazione</em>- [ ] User preferences API (per-user device flags, notification settings) / <em>API preferenze utente</em><a class="headerlink" href="#-new-rest-endpoints-for-v2-dashboard-needs-nuovi-endpoint-rest-per-le-esigenze-della-dashboard-v2-device-settings-readwrite-api-api-letturascrittura-impostazioni-dispositivo-event-history-with-filtering-and-pagination-storico-eventi-con-filtro-e-paginazione-user-preferences-api-per-user-device-flags-notification-settings-api-preferenze-utente" title="Permanent link">&para;</a></h2>
+<h2 id="phase-3-protocol-bridge-bridge-protocollo">Phase 3: Protocol Bridge / Bridge Protocollo<a class="headerlink" href="#phase-3-protocol-bridge-bridge-protocollo" title="Permanent link">&para;</a></h2>
+<h2 id="-evaluate-mqtt-broker-mosquitto-or-cloud-managed-valutare-broker-mqtt-build-protocol-bridge-translate-current-httpaes-to-mqtttls-costruire-bridge-protocollo-maintain-backward-compatibility-with-existing-devices-mantenere-compatibilita-con-dispositivi-esistenti-new-firmware-builds-to-support-mqtt-natively-nuove-build-firmware-per-supporto-mqtt-nativo">- [ ] Evaluate MQTT broker (Mosquitto or cloud-managed) / <em>Valutare broker MQTT</em>- [ ] Build protocol bridge: translate current HTTP+AES to MQTT+TLS / <em>Costruire bridge protocollo</em>- [ ] Maintain backward compatibility with existing devices / <em>Mantenere compatibilita' con dispositivi esistenti</em>- [ ] New firmware builds to support MQTT natively / <em>Nuove build firmware per supporto MQTT nativo</em><a class="headerlink" href="#-evaluate-mqtt-broker-mosquitto-or-cloud-managed-valutare-broker-mqtt-build-protocol-bridge-translate-current-httpaes-to-mqtttls-costruire-bridge-protocollo-maintain-backward-compatibility-with-existing-devices-mantenere-compatibilita-con-dispositivi-esistenti-new-firmware-builds-to-support-mqtt-natively-nuove-build-firmware-per-supporto-mqtt-nativo" title="Permanent link">&para;</a></h2>
+<h2 id="phase-4-mobile-app-sync-sincronizzazione-app-mobile">Phase 4: Mobile App Sync / Sincronizzazione App Mobile<a class="headerlink" href="#phase-4-mobile-app-sync-sincronizzazione-app-mobile" title="Permanent link">&para;</a></h2>
+<h2 id="-replicate-web-v2-features-to-flutter-app-replicare-funzionalita-web-v2-nellapp-flutter-shared-api-same-backend-same-data-api-condivisa-stesso-backend-stessi-dati-embedded-help-pages-via-webview-pagine-aiuto-incorporate-tramite-webview-push-notifications-notifiche-push">- [ ] Replicate web v2 features to Flutter app / <em>Replicare funzionalita' web v2 nell'app Flutter</em>- [ ] Shared API — same backend, same data / <em>API condivisa — stesso backend, stessi dati</em>- [ ] Embedded help pages via WebView / <em>Pagine aiuto incorporate tramite WebView</em>- [ ] Push notifications / <em>Notifiche push</em><a class="headerlink" href="#-replicate-web-v2-features-to-flutter-app-replicare-funzionalita-web-v2-nellapp-flutter-shared-api-same-backend-same-data-api-condivisa-stesso-backend-stessi-dati-embedded-help-pages-via-webview-pagine-aiuto-incorporate-tramite-webview-push-notifications-notifiche-push" title="Permanent link">&para;</a></h2>
+<h2 id="phase-5-advanced-analytics-analisi-avanzata">Phase 5: Advanced Analytics / Analisi Avanzata<a class="headerlink" href="#phase-5-advanced-analytics-analisi-avanzata" title="Permanent link">&para;</a></h2>
+<h2 id="-predictive-maintenance-models-modelli-manutenzione-predittiva-fleet-level-analytics-and-reporting-analisi-e-reportistica-a-livello-flotta-lubricant-consumption-optimization-ottimizzazione-consumo-lubrificante-ai-assisted-troubleshooting-risoluzione-problemi-assistita-da-ai">- [ ] Predictive maintenance models / <em>Modelli manutenzione predittiva</em>- [ ] Fleet-level analytics and reporting / <em>Analisi e reportistica a livello flotta</em>- [ ] Lubricant consumption optimization / <em>Ottimizzazione consumo lubrificante</em>- [ ] AI-assisted troubleshooting / <em>Risoluzione problemi assistita da AI</em><a class="headerlink" href="#-predictive-maintenance-models-modelli-manutenzione-predittiva-fleet-level-analytics-and-reporting-analisi-e-reportistica-a-livello-flotta-lubricant-consumption-optimization-ottimizzazione-consumo-lubrificante-ai-assisted-troubleshooting-risoluzione-problemi-assistita-da-ai" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-request-features-come-richiedere-funzionalita">How to Request Features / Come Richiedere Funzionalita'<a class="headerlink" href="#how-to-request-features-come-richiedere-funzionalita" title="Permanent link">&para;</a></h2>
+<p>Field engineers and stakeholders can request features through the <a href="../field/feature-request/">Feature Request</a> page. No GitHub account needed.</p>
+<p><em>I tecnici sul campo e gli stakeholder possono richiedere funzionalita' tramite la pagina <a href="../field/feature-request/">Richiesta Funzionalita'</a>. Non serve un account GitHub.</em></p>
+<hr />
+<p><em>Full detailed roadmap available as a separate document (DRUCS-Unified-Modernization-Roadmap).</em></p>
+<p><em>Roadmap dettagliata completa disponibile come documento separato (DRUCS-Unified-Modernization-Roadmap).</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/DropsA-SpA" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

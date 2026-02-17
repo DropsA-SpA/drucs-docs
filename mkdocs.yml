@@ -1,0 +1,99 @@
+site_name: DRUCS Documentation
+site_description: DropsA IoT Platform — Technical Docs, Manuals & Roadmap
+site_url: https://enghelper.dropsa.net/docs/
+repo_url: https://github.com/DropsA-SpA
+repo_name: DropsA-SpA
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - toc.follow
+  icon:
+    logo: material/water-pump
+    repo: fontawesome/brands/github
+  custom_dir: overrides
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/DropsA-SpA
+  generator: false
+  alternate:
+    - name: English
+      link: /docs/
+      lang: en
+    - name: Italiano
+      link: /docs/it/
+      lang: it
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Platform:
+    - Overview: platform/overview.md
+    - Architecture: platform/architecture.md
+    - Variable Map: platform/variable-map.md
+  - Products:
+    - Catalog: products/index.md
+    - BravoCompact 4.0: products/bravocompact.md
+    - Bravo 4.0: products/bravo.md
+    - Smart 4.0: products/smart.md
+    - SilentTrack: products/silenttrack.md
+    - VipAir 4.0: products/vipair.md
+  - Roadmap:
+    - Development Roadmap: roadmap/index.md
+    - Release Notes: roadmap/releases.md
+  - Field Engineers:
+    - Getting Started: field/index.md
+    - Request a Feature: field/feature-request.md
+    - Report an Issue: field/report-issue.md
+  - Dashboard:
+    - DRUCS v2: dashboard/index.md

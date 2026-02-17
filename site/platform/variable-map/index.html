@@ -1,0 +1,3312 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="DropsA IoT Platform — Technical Docs, Manuals & Roadmap">
+      
+      
+      
+        <link rel="canonical" href="https://enghelper.dropsa.net/docs/platform/variable-map/">
+      
+      
+        <link rel="prev" href="../architecture/">
+      
+      
+        <link rel="next" href="../../products/">
+      
+      
+        
+          <link rel="alternate" href="/docs/" hreflang="en">
+        
+          <link rel="alternate" href="/docs/it/" hreflang="it">
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Variable Map - DRUCS Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#drucs-variable-map-mappa-variabili-drucs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  <style>
+    .md-banner {
+      background-color: #2c5282;
+      color: white;
+    }
+    .md-banner a {
+      color: #90cdf4;
+    }
+  </style>
+  This documentation site is under active development — February 2026 /
+  Questo sito di documentazione e' in fase di sviluppo attivo — Febbraio 2026
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="DRUCS Documentation" class="md-header__button md-logo" aria-label="DRUCS Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 14.5s2 2.17 2 3.5a2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-1.33 2-3.5 2-3.5M5 18V9a2 2 0 0 1-2-2 2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1h8a2 2 0 0 1 2 2v4a1 1 0 0 1 1 1 1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1 1 1 0 0 1 1-1V9h-6v9h1a2 2 0 0 1 2 2v2H2v-2a2 2 0 0 1 2-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DRUCS Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Variable Map
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/docs/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/docs/it/" hreflang="it" class="md-select__link">
+              Italiano
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DropsA-SpA" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DropsA-SpA
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../overview/" class="md-tabs__link">
+          
+  
+  
+  Platform
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../products/" class="md-tabs__link">
+          
+  
+  
+  Products
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../roadmap/" class="md-tabs__link">
+          
+  
+  
+  Roadmap
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../field/" class="md-tabs__link">
+          
+  
+  
+  Field Engineers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dashboard/" class="md-tabs__link">
+          
+  
+  
+  Dashboard
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="DRUCS Documentation" class="md-nav__button md-logo" aria-label="DRUCS Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 14.5s2 2.17 2 3.5a2 2 0 0 1-2 2 2 2 0 0 1-2-2c0-1.33 2-3.5 2-3.5M5 18V9a2 2 0 0 1-2-2 2 2 0 0 1 2-2V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1h8a2 2 0 0 1 2 2v4a1 1 0 0 1 1 1 1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1 1 1 0 0 1 1-1V9h-6v9h1a2 2 0 0 1 2 2v2H2v-2a2 2 0 0 1 2-2z"/></svg>
+
+    </a>
+    DRUCS Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DropsA-SpA" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DropsA-SpA
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variable Map
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Variable Map
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-rosetta-stone-la-stele-di-rosetta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Rosetta Stone / La Stele di Rosetta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-riferimento-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference / Riferimento Rapido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#products-prodotti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Products / Prodotti
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-data-variables-100000-dati-live-variabili" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LIVE DATA — Variables (100,000+) / DATI LIVE — Variabili
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LIVE DATA — Variables (100,000+) / DATI LIVE — Variabili">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-all-products-comuni-a-tutti-i-prodotti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core — All Products / Comuni a tutti i prodotti
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lubrication-timers-timer-lubrificazione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lubrication Timers / Timer Lubrificazione
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-pressure-sensor-sensore-livello-e-pressione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level &amp; Pressure Sensor / Sensore Livello e Pressione
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#silenttrack-zone-data-dati-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SilentTrack — Zone Data / Dati Zone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vipair-micropump-data-dati-micropompe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VipAir — MicroPump Data / Dati Micropompe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plant-status-stato-impianto-silenttrack-vipair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plant Status / Stato Impianto (SilentTrack + VipAir)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings-parameters-1-99999-impostazioni-parametri" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SETTINGS — Parameters (1-99,999) / IMPOSTAZIONI — Parametri
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SETTINGS — Parameters (1-99,999) / IMPOSTAZIONI — Parametri">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lubrication-setup-configurazione-lubrificazione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lubrication Setup / Configurazione Lubrificazione
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wi-fi-wi-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wi-Fi / Wi-Fi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bluetooth-bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bluetooth / Bluetooth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System / Sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lubricant-lubrificante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lubricant / Lubrificante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-widgets-widget-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Widgets / Widget Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vipair-specific-specifici-vipair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VipAir-Specific / Specifici VipAir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#silenttrack-specific-specifici-silenttrack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SilentTrack-Specific / Specifici SilentTrack
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands-actions-200000-comandi-azioni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COMMANDS — Actions (200,000+) / COMANDI — Azioni
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alarms-warnings-allarmi-e-avvisi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALARMS &amp; WARNINGS / ALLARMI E AVVISI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ALARMS &amp; WARNINGS / ALLARMI E AVVISI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alarms-red-allarmi-rosso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alarms (Red) / Allarmi (Rosso)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warnings-amber-avvisi-ambra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Warnings (Amber) / Avvisi (Ambra)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-dashboard-uses-this-come-la-dashboard-usa-questi-dati" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the Dashboard Uses This / Come la Dashboard Usa Questi Dati
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the Dashboard Uses This / Come la Dashboard Usa Questi Dati">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hours-box-indicatore-ore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hours Box / Indicatore Ore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycles-box-indicatore-cicli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycles Box / Indicatore Cicli
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-box-indicatore-livello" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level Box / Indicatore Livello
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will-go-empty-stima-esaurimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Will Go Empty / Stima Esaurimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Products
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Products
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Catalog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/bravocompact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BravoCompact 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/bravo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bravo 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/smart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Smart 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/silenttrack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SilentTrack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../products/vipair/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VipAir 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Roadmap
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Roadmap
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Release Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Field Engineers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Field Engineers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../field/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../field/feature-request/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Request a Feature
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../field/report-issue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Report an Issue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dashboard
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DRUCS v2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-rosetta-stone-la-stele-di-rosetta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Rosetta Stone / La Stele di Rosetta
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference-riferimento-rapido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Reference / Riferimento Rapido
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#products-prodotti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Products / Prodotti
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#live-data-variables-100000-dati-live-variabili" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LIVE DATA — Variables (100,000+) / DATI LIVE — Variabili
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LIVE DATA — Variables (100,000+) / DATI LIVE — Variabili">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-all-products-comuni-a-tutti-i-prodotti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core — All Products / Comuni a tutti i prodotti
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lubrication-timers-timer-lubrificazione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lubrication Timers / Timer Lubrificazione
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-pressure-sensor-sensore-livello-e-pressione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level &amp; Pressure Sensor / Sensore Livello e Pressione
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#silenttrack-zone-data-dati-zone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SilentTrack — Zone Data / Dati Zone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vipair-micropump-data-dati-micropompe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VipAir — MicroPump Data / Dati Micropompe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plant-status-stato-impianto-silenttrack-vipair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plant Status / Stato Impianto (SilentTrack + VipAir)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#settings-parameters-1-99999-impostazioni-parametri" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SETTINGS — Parameters (1-99,999) / IMPOSTAZIONI — Parametri
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SETTINGS — Parameters (1-99,999) / IMPOSTAZIONI — Parametri">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lubrication-setup-configurazione-lubrificazione" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lubrication Setup / Configurazione Lubrificazione
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wi-fi-wi-fi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wi-Fi / Wi-Fi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bluetooth-bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bluetooth / Bluetooth
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System / Sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lubricant-lubrificante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lubricant / Lubrificante
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#display-widgets-widget-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display Widgets / Widget Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vipair-specific-specifici-vipair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VipAir-Specific / Specifici VipAir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#silenttrack-specific-specifici-silenttrack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SilentTrack-Specific / Specifici SilentTrack
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands-actions-200000-comandi-azioni" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        COMMANDS — Actions (200,000+) / COMANDI — Azioni
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alarms-warnings-allarmi-e-avvisi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ALARMS &amp; WARNINGS / ALLARMI E AVVISI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ALARMS &amp; WARNINGS / ALLARMI E AVVISI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alarms-red-allarmi-rosso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alarms (Red) / Allarmi (Rosso)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warnings-amber-avvisi-ambra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Warnings (Amber) / Avvisi (Ambra)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-dashboard-uses-this-come-la-dashboard-usa-questi-dati" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the Dashboard Uses This / Come la Dashboard Usa Questi Dati
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How the Dashboard Uses This / Come la Dashboard Usa Questi Dati">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hours-box-indicatore-ore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hours Box / Indicatore Ore
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycles-box-indicatore-cicli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycles Box / Indicatore Cicli
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-box-indicatore-livello" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level Box / Indicatore Livello
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#will-go-empty-stima-esaurimento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Will Go Empty / Stima Esaurimento
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="drucs-variable-map-mappa-variabili-drucs">DRUCS Variable Map / Mappa Variabili DRUCS<a class="headerlink" href="#drucs-variable-map-mappa-variabili-drucs" title="Permanent link">&para;</a></h1>
+<h3 id="the-rosetta-stone-la-stele-di-rosetta">The Rosetta Stone / La Stele di Rosetta<a class="headerlink" href="#the-rosetta-stone-la-stele-di-rosetta" title="Permanent link">&para;</a></h3>
+<p><strong>What is this?</strong> Every Dropsa IoT device sends data using numeric IDs. This document maps each ID to what it means in the firmware, the API, and the user-facing display.</p>
+<p><em>Ogni dispositivo IoT Dropsa invia dati usando ID numerici. Questo documento mappa ogni ID al suo significato nel firmware, nell'API e nel display utente.</em></p>
+<hr />
+<h2 id="quick-reference-riferimento-rapido">Quick Reference / Riferimento Rapido<a class="headerlink" href="#quick-reference-riferimento-rapido" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID Range / <em>Intervallo</em></th>
+<th>Type / <em>Tipo</em></th>
+<th>Example / <em>Esempio</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 — 99,999</strong></td>
+<td>Settings (user-configurable) / <em>Impostazioni</em></td>
+<td><code>5</code> = Cycle time / <em>Tempo ciclo</em></td>
+</tr>
+<tr>
+<td><strong>100,000 — 199,999</strong></td>
+<td>Live data (read-only) / <em>Dati live</em></td>
+<td><code>100100</code> = Motor hours / <em>Ore motore</em></td>
+</tr>
+<tr>
+<td><strong>200,000 — 300,000</strong></td>
+<td>Commands (buttons) / <em>Comandi</em></td>
+<td><code>200001</code> = Start lubrication / <em>Avvia lubrificazione</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="products-prodotti">Products / Prodotti<a class="headerlink" href="#products-prodotti" title="Permanent link">&para;</a></h2>
+<p>Each product compiles the same firmware with a different <code>#define</code>. Not all variables exist on every product.</p>
+<p><em>Ogni prodotto compila lo stesso firmware con un <code>#define</code> diverso. Non tutte le variabili esistono su ogni prodotto.</em></p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Product</th>
+<th>BLE Prefix</th>
+<th>Key Feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BC</strong></td>
+<td>BravoCompact 4.0</td>
+<td><code>BC_</code></td>
+<td>Single-point, autonomous</td>
+</tr>
+<tr>
+<td><strong>BR</strong></td>
+<td>Bravo 4.0</td>
+<td><code>BR_</code></td>
+<td>Multi-point, autonomous/CAN/IO-Link</td>
+</tr>
+<tr>
+<td><strong>SM</strong></td>
+<td>Smart 4.0</td>
+<td><code>SM_</code></td>
+<td>Compact, autonomous/IO-Link</td>
+</tr>
+<tr>
+<td><strong>OM</strong></td>
+<td>OmegaPump</td>
+<td><code>OM_</code></td>
+<td>Motor hours tracking</td>
+</tr>
+<tr>
+<td><strong>ST</strong></td>
+<td>SilentTrack</td>
+<td><code>ST_</code></td>
+<td>Rail lubrication, 4 zones, weather</td>
+</tr>
+<tr>
+<td><strong>NV</strong></td>
+<td>VipAir 4.0</td>
+<td><code>NV_</code></td>
+<td>Air-oil, 8 micropumps</td>
+</tr>
+<tr>
+<td><strong>MA</strong></td>
+<td>Maxtreme</td>
+<td><code>MA_</code></td>
+<td>High-pressure progressive</td>
+</tr>
+<tr>
+<td><strong>VP</strong></td>
+<td>VIP6</td>
+<td><code>VP_</code></td>
+<td>Legacy VIP platform</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="live-data-variables-100000-dati-live-variabili">LIVE DATA — Variables (100,000+) / DATI LIVE — Variabili<a class="headerlink" href="#live-data-variables-100000-dati-live-variabili" title="Permanent link">&para;</a></h2>
+<h3 id="core-all-products-comuni-a-tutti-i-prodotti">Core — All Products / Comuni a tutti i prodotti<a class="headerlink" href="#core-all-products-comuni-a-tutti-i-prodotti" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>What it shows (EN)</th>
+<th>Cosa mostra (IT)</th>
+<th>Unit</th>
+<th>Dashboard Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>100010</strong></td>
+<td>Device voltage</td>
+<td><em>Tensione dispositivo</em></td>
+<td>V</td>
+<td>Health monitoring</td>
+</tr>
+<tr>
+<td><strong>100011</strong></td>
+<td>Motor current</td>
+<td><em>Corrente motore</em></td>
+<td>A</td>
+<td>Health monitoring</td>
+</tr>
+<tr>
+<td><strong>100012</strong></td>
+<td>MCU temperature</td>
+<td><em>Temperatura MCU</em></td>
+<td>C</td>
+<td>Health monitoring</td>
+</tr>
+<tr>
+<td><strong>100013</strong></td>
+<td>Battery voltage</td>
+<td><em>Tensione batteria</em></td>
+<td>V</td>
+<td>Health monitoring</td>
+</tr>
+<tr>
+<td><strong>100014</strong></td>
+<td>FW upload progress</td>
+<td><em>Avanzamento FW</em></td>
+<td>%</td>
+<td>OTA update screen</td>
+</tr>
+<tr>
+<td><strong>100015</strong></td>
+<td>Active warnings</td>
+<td><em>Avvisi attivi</em></td>
+<td>—</td>
+<td>Warning badge (semicolon-separated event IDs)</td>
+</tr>
+<tr>
+<td><strong>100016</strong></td>
+<td>Active alarms</td>
+<td><em>Allarmi attivi</em></td>
+<td>—</td>
+<td>Alarm badge (semicolon-separated event IDs)</td>
+</tr>
+<tr>
+<td><strong>100050</strong></td>
+<td>Pump status</td>
+<td><em>Stato pompa</em></td>
+<td>—</td>
+<td>Status badge: Stop/Pause/Work/Pause between cycles/Suspension</td>
+</tr>
+<tr>
+<td><strong>100100</strong></td>
+<td><strong>Total motor hours</strong></td>
+<td><strong>Ore motore totali</strong></td>
+<td>sec</td>
+<td><strong>Hours box</strong> on dashboard (sec / 3600 = hours)</td>
+</tr>
+<tr>
+<td><strong>100101</strong></td>
+<td><strong>Total pump rotations</strong></td>
+<td><strong>Rotazioni pompa totali</strong></td>
+<td>rot</td>
+<td><strong>"Pump Rotations"</strong> counter on dashboard</td>
+</tr>
+<tr>
+<td><strong>100052</strong></td>
+<td>Lub. pulse counter</td>
+<td><em>Contatore impulsi lub.</em></td>
+<td>pulses</td>
+<td>Fallback counter ("Lub. Pulses")</td>
+</tr>
+<tr>
+<td><strong>100054</strong></td>
+<td>Cycle counter</td>
+<td><em>Contatore cicli</em></td>
+<td>cycles</td>
+<td>Fallback counter ("Cycles")</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lubrication-timers-timer-lubrificazione">Lubrication Timers / Timer Lubrificazione<a class="headerlink" href="#lubrication-timers-timer-lubrificazione" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>What it shows (EN)</th>
+<th>Cosa mostra (IT)</th>
+<th>Unit</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100051</td>
+<td>Pre-lubrication time</td>
+<td><em>Tempo pre-lubrificazione</em></td>
+<td>sec</td>
+<td>Elapsed since start</td>
+</tr>
+<tr>
+<td>100053</td>
+<td>Cycle time (running)</td>
+<td><em>Tempo ciclo (in corso)</em></td>
+<td>sec</td>
+<td>Linked to setting #5</td>
+</tr>
+<tr>
+<td>100055</td>
+<td>Interval time (running)</td>
+<td><em>Tempo intervallo (in corso)</em></td>
+<td>sec</td>
+<td>Linked to setting #7</td>
+</tr>
+<tr>
+<td>100056</td>
+<td>PS delay timer</td>
+<td><em>Timer ritardo pressostato</em></td>
+<td>sec</td>
+<td></td>
+</tr>
+<tr>
+<td>100057</td>
+<td>PS delay input 1</td>
+<td><em>Ritardo PS ingresso 1</em></td>
+<td>sec</td>
+<td></td>
+</tr>
+<tr>
+<td>100058</td>
+<td>PS delay input 2</td>
+<td><em>Ritardo PS ingresso 2</em></td>
+<td>sec</td>
+<td></td>
+</tr>
+<tr>
+<td>100059</td>
+<td>Suspension timer</td>
+<td><em>Timer sospensione</em></td>
+<td>sec</td>
+<td></td>
+</tr>
+<tr>
+<td>100060</td>
+<td>Cycle timeout timer</td>
+<td><em>Timer timeout ciclo</em></td>
+<td>sec</td>
+<td></td>
+</tr>
+<tr>
+<td>100061</td>
+<td>Cycle pulses detected</td>
+<td><em>Impulsi ciclo rilevati</em></td>
+<td>pulses</td>
+<td></td>
+</tr>
+<tr>
+<td>100062</td>
+<td>Interval pulses detected</td>
+<td><em>Impulsi intervallo rilevati</em></td>
+<td>pulses</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="level-pressure-sensor-sensore-livello-e-pressione">Level &amp; Pressure Sensor / Sensore Livello e Pressione<a class="headerlink" href="#level-pressure-sensor-sensore-livello-e-pressione" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>What it shows (EN)</th>
+<th>Cosa mostra (IT)</th>
+<th>Unit</th>
+<th>Products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>100017</strong></td>
+<td><strong>Reservoir level</strong></td>
+<td><strong>Livello serbatoio</strong></td>
+<td>%</td>
+<td>BC, BR, SM (with LP sensor)</td>
+</tr>
+<tr>
+<td><strong>100018</strong></td>
+<td>Pressure</td>
+<td><em>Pressione</em></td>
+<td>bar</td>
+<td>BC, BR, SM (with LP sensor)</td>
+</tr>
+<tr>
+<td>100260</td>
+<td>Current pressure</td>
+<td><em>Pressione attuale</em></td>
+<td>bar</td>
+<td>VipAir, Maxtreme</td>
+</tr>
+<tr>
+<td>100261</td>
+<td>Setpoint pressure</td>
+<td><em>Pressione di riferimento</em></td>
+<td>bar</td>
+<td>VipAir, Maxtreme</td>
+</tr>
+</tbody>
+</table>
+<h3 id="silenttrack-zone-data-dati-zone">SilentTrack — Zone Data / Dati Zone<a class="headerlink" href="#silenttrack-zone-data-dati-zone" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>What it shows (EN)</th>
+<th>Cosa mostra (IT)</th>
+<th>Unit</th>
+<th>Dashboard Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>100110</strong></td>
+<td>Zone 1 total activations</td>
+<td><em>Attivazioni totali zona 1</em></td>
+<td>count</td>
+<td><strong>RailCycles</strong> (sum 100110-100113)</td>
+</tr>
+<tr>
+<td><strong>100111</strong></td>
+<td>Zone 2 total activations</td>
+<td><em>Attivazioni totali zona 2</em></td>
+<td>count</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>100112</strong></td>
+<td>Zone 3 total activations</td>
+<td><em>Attivazioni totali zona 3</em></td>
+<td>count</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>100113</strong></td>
+<td>Zone 4 total activations</td>
+<td><em>Attivazioni totali zona 4</em></td>
+<td>count</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>100120</strong></td>
+<td>Zone 1 daily activations</td>
+<td><em>Attivazioni giornaliere zona 1</em></td>
+<td>count</td>
+<td><strong>Daily RailCycles</strong> (sum 100120-100123)</td>
+</tr>
+<tr>
+<td><strong>100121</strong></td>
+<td>Zone 2 daily activations</td>
+<td><em>Attivazioni giornaliere zona 2</em></td>
+<td>count</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>100122</strong></td>
+<td>Zone 3 daily activations</td>
+<td><em>Attivazioni giornaliere zona 3</em></td>
+<td>count</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>100123</strong></td>
+<td>Zone 4 daily activations</td>
+<td><em>Attivazioni giornaliere zona 4</em></td>
+<td>count</td>
+<td></td>
+</tr>
+<tr>
+<td>100230-100233</td>
+<td>Zone 1-4 status</td>
+<td><em>Stato zona 1-4</em></td>
+<td>—</td>
+<td>Stopped/Pause/Suspend/Lubrication/Queue</td>
+</tr>
+<tr>
+<td>100220-100223</td>
+<td>Zone 1-4 solenoid valve</td>
+<td><em>EV zona 1-4</em></td>
+<td>—</td>
+<td>On/Off</td>
+</tr>
+<tr>
+<td>100240-100243</td>
+<td>Zone 1-4 train count</td>
+<td><em>Conteggio treni zona 1-4</em></td>
+<td>trains</td>
+<td></td>
+</tr>
+<tr>
+<td>100067</td>
+<td>Rail temperature</td>
+<td><em>Temperatura rotaia</em></td>
+<td>C</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="vipair-micropump-data-dati-micropompe">VipAir — MicroPump Data / Dati Micropompe<a class="headerlink" href="#vipair-micropump-data-dati-micropompe" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>What it shows (EN)</th>
+<th>Cosa mostra (IT)</th>
+<th>Unit</th>
+<th>Dashboard Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>100320-100327</strong></td>
+<td><strong>Total cycles MP1-MP8</strong></td>
+<td><strong>Cicli totali MP1-MP8</strong></td>
+<td>cycles</td>
+<td><strong>MicroPump Cycles</strong> (sum all 8)</td>
+</tr>
+<tr>
+<td>100300-100307</td>
+<td>Status MP1-MP8</td>
+<td><em>Stato MP1-MP8</em></td>
+<td>—</td>
+<td>Alarm/Disabled/Stopped/Filling/Pre-lub/Lub</td>
+</tr>
+<tr>
+<td>100310-100317</td>
+<td>Air pressure MP1-MP8</td>
+<td><em>Pressione aria MP1-MP8</em></td>
+<td>bar</td>
+<td></td>
+</tr>
+<tr>
+<td>100263</td>
+<td>Air solenoid valve</td>
+<td><em>EV aria</em></td>
+<td>—</td>
+<td>Off/On</td>
+</tr>
+<tr>
+<td>100264</td>
+<td>Oil solenoid valve</td>
+<td><em>EV olio</em></td>
+<td>—</td>
+<td>Off/On</td>
+</tr>
+</tbody>
+</table>
+<h3 id="plant-status-stato-impianto-silenttrack-vipair">Plant Status / Stato Impianto (SilentTrack + VipAir)<a class="headerlink" href="#plant-status-stato-impianto-silenttrack-vipair" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>What it shows (EN)</th>
+<th>Cosa mostra (IT)</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100200</td>
+<td>System status</td>
+<td><em>Stato impianto</em></td>
+<td>Stopped/Running/Standby(Time/Voltage/Weather/HighTemp/LowTemp/NoData)</td>
+</tr>
+<tr>
+<td>100201</td>
+<td>Mains voltage</td>
+<td><em>Tensione di rete</em></td>
+<td>Absent/Present</td>
+</tr>
+<tr>
+<td>100202</td>
+<td>Emergency button</td>
+<td><em>Pulsante emergenza</em></td>
+<td>Pressed/Released</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="settings-parameters-1-99999-impostazioni-parametri">SETTINGS — Parameters (1-99,999) / IMPOSTAZIONI — Parametri<a class="headerlink" href="#settings-parameters-1-99999-impostazioni-parametri" title="Permanent link">&para;</a></h2>
+<h3 id="lubrication-setup-configurazione-lubrificazione">Lubrication Setup / Configurazione Lubrificazione<a class="headerlink" href="#lubrication-setup-configurazione-lubrificazione" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Setting (EN)</th>
+<th><em>Impostazione (IT)</em></th>
+<th>Type</th>
+<th>Options / Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>Lubrication mode</td>
+<td><em>Modalita' lubrificazione</em></td>
+<td>Mode</td>
+<td>PS/SEP, Pulse counting, Rotation, Time, External</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>Interval mode</td>
+<td><em>Modalita' intervallo</em></td>
+<td>Mode</td>
+<td>Time, Pulse counting, Time &amp; Pulses, Pulses &amp; TOut</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>Input 1 mode</td>
+<td><em>Ingresso 1</em></td>
+<td>Mode</td>
+<td>Disconnect, PS, SEP/PROX, Pulse, Suspend, External</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>Input 2 mode</td>
+<td><em>Ingresso 2</em></td>
+<td>Mode</td>
+<td>(same as above)</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>Cycle time</td>
+<td><em>Tempo ciclo</em></td>
+<td>Seconds</td>
+<td>Dynamic range — <strong>linked to live var 100053</strong></td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td>Cycle pulses</td>
+<td><em>Impulsi ciclo</em></td>
+<td>Pulses</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>7</strong></td>
+<td>Interval time</td>
+<td><em>Tempo intervallo</em></td>
+<td>Seconds</td>
+<td>Dynamic range — <strong>linked to live var 100055</strong></td>
+</tr>
+<tr>
+<td><strong>8</strong></td>
+<td>Interval pulses</td>
+<td><em>Impulsi intervallo</em></td>
+<td>Pulses</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>9</strong></td>
+<td>Number of cycles</td>
+<td><em>Numero di cicli</em></td>
+<td>Count</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>10</strong></td>
+<td>Cycle timeout</td>
+<td><em>Timeout ciclo</em></td>
+<td>Seconds</td>
+<td>Max duration before alarm</td>
+</tr>
+<tr>
+<td><strong>11</strong></td>
+<td>Pause between cycles</td>
+<td><em>Pausa tra cicli</em></td>
+<td>Seconds</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>12</strong></td>
+<td>Suspension time</td>
+<td><em>Tempo sospensione tra impulsi</em></td>
+<td>Seconds</td>
+<td>Max delay between pulses</td>
+</tr>
+<tr>
+<td><strong>13</strong></td>
+<td>PS delay</td>
+<td><em>Ritardo pressostato</em></td>
+<td>Seconds</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>14</strong></td>
+<td>Interval timeout</td>
+<td><em>Timeout intervallo</em></td>
+<td>Seconds</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>15</strong></td>
+<td>Suspension mode</td>
+<td><em>Modalita' sospensione</em></td>
+<td>Mode</td>
+<td>Paused / During lubrication / Always</td>
+</tr>
+<tr>
+<td><strong>16</strong></td>
+<td>Suspension contact</td>
+<td><em>Contatto sospensione</em></td>
+<td>Mode</td>
+<td>Normally Open / Normally Closed</td>
+</tr>
+<tr>
+<td><strong>17</strong></td>
+<td>Start from</td>
+<td><em>Avvio da</em></td>
+<td>Mode</td>
+<td>Lubrication / Non-Lub. Cycle / Last Status</td>
+</tr>
+<tr>
+<td><strong>18</strong></td>
+<td>Pre-lubrication cycles</td>
+<td><em>Cicli pre-lubrificazione</em></td>
+<td>Count</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>19</strong></td>
+<td>Disable min level alarm</td>
+<td><em>Disab. allarme min. livello</em></td>
+<td>On/Off</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>20</strong></td>
+<td>Lub. status output role</td>
+<td><em>Uscita stato lubrificazione</em></td>
+<td>Mode</td>
+<td>Only lub. / Lub.(steady) &amp; Pause(blink)</td>
+</tr>
+<tr>
+<td><strong>21</strong></td>
+<td>Lub. status output type</td>
+<td><em>Tipo uscita lub.</em></td>
+<td>Mode</td>
+<td>Type N / Type P</td>
+</tr>
+<tr>
+<td><strong>22</strong></td>
+<td>Alarm output role</td>
+<td><em>Uscita stato allarme</em></td>
+<td>Mode</td>
+<td>Alarm only / Coded / Alarm &amp; Warning / Alarm(steady) &amp; Warn(blink)</td>
+</tr>
+<tr>
+<td><strong>23</strong></td>
+<td>Alarm output type</td>
+<td><em>Tipo uscita allarme</em></td>
+<td>Mode</td>
+<td>Type N / Type P</td>
+</tr>
+<tr>
+<td><strong>24</strong></td>
+<td>Reservoir type</td>
+<td><em>Tipo serbatoio</em></td>
+<td>Mode</td>
+<td>Unconfigured / Follower plate / Cart. 400cc / Cart. 700cc</td>
+</tr>
+<tr>
+<td><strong>25</strong></td>
+<td>Check rotation sensor</td>
+<td><em>Controllo sensore rotazione</em></td>
+<td>On/Off</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="wi-fi-wi-fi">Wi-Fi / Wi-Fi<a class="headerlink" href="#wi-fi-wi-fi" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Setting (EN)</th>
+<th>Impostazione (IT)</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>40000</strong></td>
+<td>Enable Wi-Fi</td>
+<td><em>Abilita Wi-Fi</em></td>
+<td>On/Off</td>
+</tr>
+<tr>
+<td><strong>40010</strong></td>
+<td>SSID</td>
+<td><em>Nome rete</em></td>
+<td>Text (32 chars)</td>
+</tr>
+<tr>
+<td><strong>40020</strong></td>
+<td>Password</td>
+<td><em>Password Wi-Fi</em></td>
+<td>Password</td>
+</tr>
+<tr>
+<td><strong>40030</strong></td>
+<td>DHCP</td>
+<td><em>Abilita DHCP</em></td>
+<td>On/Off</td>
+</tr>
+<tr>
+<td><strong>40040</strong></td>
+<td>IP address</td>
+<td><em>Indirizzo IP</em></td>
+<td>IP</td>
+</tr>
+<tr>
+<td><strong>40050</strong></td>
+<td>Gateway</td>
+<td><em>IP gateway</em></td>
+<td>IP</td>
+</tr>
+<tr>
+<td><strong>40060</strong></td>
+<td>Subnet mask</td>
+<td><em>Maschera di sottorete</em></td>
+<td>IP</td>
+</tr>
+<tr>
+<td><strong>40090</strong></td>
+<td>Connection check</td>
+<td><em>Verifica connessione</em></td>
+<td>Mode: Off/10m/30m/1h/2h/3h/6h/12h/24h</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bluetooth-bluetooth">Bluetooth / Bluetooth<a class="headerlink" href="#bluetooth-bluetooth" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Setting (EN)</th>
+<th>Impostazione (IT)</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>30000</strong></td>
+<td>Enable Bluetooth</td>
+<td><em>Abilita Bluetooth</em></td>
+<td>On/Off</td>
+</tr>
+<tr>
+<td><strong>30010</strong></td>
+<td>BLE PIN</td>
+<td><em>PIN Bluetooth</em></td>
+<td>4-6 digits</td>
+</tr>
+</tbody>
+</table>
+<h3 id="system-sistema">System / Sistema<a class="headerlink" href="#system-sistema" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Setting (EN)</th>
+<th>Impostazione (IT)</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>20000</strong></td>
+<td>Store all logs</td>
+<td><em>Memorizza tutti i log</em></td>
+<td>On/Off</td>
+</tr>
+<tr>
+<td><strong>20100</strong></td>
+<td>Screen lock timeout</td>
+<td><em>Timeout blocco schermo</em></td>
+<td>Mode: 30s/1m/10m/30m/60m</td>
+</tr>
+<tr>
+<td><strong>20130</strong></td>
+<td>Time zone</td>
+<td><em>Fuso orario</em></td>
+<td>Mode (49 options)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="lubricant-lubrificante">Lubricant / Lubrificante<a class="headerlink" href="#lubricant-lubrificante" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Setting (EN)</th>
+<th>Impostazione (IT)</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>21000</strong></td>
+<td>Lube type</td>
+<td><em>Tipo lubrificante</em></td>
+<td>Mode: Not set/Custom/G000-G004</td>
+</tr>
+<tr>
+<td><strong>21010</strong></td>
+<td>Package format</td>
+<td><em>Formato confezione</em></td>
+<td>Mode: Not set/Cart.400cc/Cart.700cc/5KG/10KG/50KG</td>
+</tr>
+<tr>
+<td><strong>21020</strong></td>
+<td>Request reorder</td>
+<td><em>Richiedi ordine</em></td>
+<td>On/Off</td>
+</tr>
+<tr>
+<td><strong>21030</strong></td>
+<td>Notify refill</td>
+<td><em>Notifica riempimento</em></td>
+<td>On/Off</td>
+</tr>
+<tr>
+<td><strong>21040</strong></td>
+<td>Custom lube name</td>
+<td><em>Nome personalizzato</em></td>
+<td>Text (32 chars)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="display-widgets-widget-display">Display Widgets / Widget Display<a class="headerlink" href="#display-widgets-widget-display" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Setting (EN)</th>
+<th>Impostazione (IT)</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>60000-60040</td>
+<td>Widget 1-5 visible</td>
+<td><em>Widget 1-5 visibile</em></td>
+<td>On/Off</td>
+</tr>
+<tr>
+<td>60050</td>
+<td>Auto-scroll</td>
+<td><em>Auto-scorrimento</em></td>
+<td>On/Off</td>
+</tr>
+<tr>
+<td>60060</td>
+<td>Auto-scroll time</td>
+<td><em>Tempo auto-scorrimento</em></td>
+<td>Mode: 5s/10s/30s/1m/5m</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vipair-specific-specifici-vipair">VipAir-Specific / Specifici VipAir<a class="headerlink" href="#vipair-specific-specifici-vipair" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Setting (EN)</th>
+<th>Impostazione (IT)</th>
+<th>Products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>69-76</td>
+<td>Interval time MP1-MP8</td>
+<td><em>Tempo intervallo MP1-MP8</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>77-84</td>
+<td>Interval pulses MP1-MP8</td>
+<td><em>Impulsi intervallo MP1-MP8</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>85</td>
+<td>Cycle sensor timeout</td>
+<td><em>Timeout sensore ciclo</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>86</td>
+<td>Pump refill time</td>
+<td><em>Tempo ricarica pompa</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>90</td>
+<td>Air SV mode</td>
+<td><em>Modalita' EV aria</em></td>
+<td>VipAir: Continuous/Normal/Spray/Off</td>
+</tr>
+<tr>
+<td>96-103</td>
+<td>Min air pressure MP1-MP8</td>
+<td><em>Pressione min. aria MP1-MP8</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>104-111</td>
+<td>Max air pressure MP1-MP8</td>
+<td><em>Pressione max. aria MP1-MP8</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>116</td>
+<td>VipAir version</td>
+<td><em>Versione VipAir</em></td>
+<td>VipAir: With Tank / Without Tank</td>
+</tr>
+</tbody>
+</table>
+<h3 id="silenttrack-specific-specifici-silenttrack">SilentTrack-Specific / Specifici SilentTrack<a class="headerlink" href="#silenttrack-specific-specifici-silenttrack" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Setting (EN)</th>
+<th>Impostazione (IT)</th>
+<th>Products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30-31</td>
+<td>Zone 1-2 cycles</td>
+<td><em>Cicli zona 1-2</em></td>
+<td>SilentTrack</td>
+</tr>
+<tr>
+<td>32-33</td>
+<td>Zone 1-2 trains</td>
+<td><em>Treni zona 1-2</em></td>
+<td>SilentTrack</td>
+</tr>
+<tr>
+<td>36-37</td>
+<td>Zone 1-2 sensor link</td>
+<td><em>Zona 1-2 sensore</em></td>
+<td>SilentTrack</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Min temperature</td>
+<td><em>Temperatura minima</em></td>
+<td>SilentTrack</td>
+</tr>
+<tr>
+<td>41-43</td>
+<td>Max temperature T1-T3</td>
+<td><em>Temperatura max T1-T3</em></td>
+<td>SilentTrack</td>
+</tr>
+<tr>
+<td>44-47</td>
+<td>Working pressure / <em>constants T1-T3</em></td>
+<td><em>Pressione lavoro / costanti T1-T3</em></td>
+<td>SilentTrack</td>
+</tr>
+<tr>
+<td>48-50</td>
+<td>SV opening time T1-T3</td>
+<td><em>Tempo apertura EV T1-T3</em></td>
+<td>SilentTrack</td>
+</tr>
+<tr>
+<td>64</td>
+<td>Weather mode</td>
+<td><em>Modalita' meteo</em></td>
+<td>SilentTrack: Manual/Automatic</td>
+</tr>
+<tr>
+<td>66-67</td>
+<td>GPS coordinates</td>
+<td><em>Coordinate GPS</em></td>
+<td>SilentTrack</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="commands-actions-200000-comandi-azioni">COMMANDS — Actions (200,000+) / COMANDI — Azioni<a class="headerlink" href="#commands-actions-200000-comandi-azioni" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Button Label (EN)</th>
+<th>Etichetta Pulsante (IT)</th>
+<th>Products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200001</strong></td>
+<td><strong>Start lubrication</strong></td>
+<td><strong>Avvia lubrificazione</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>200002</strong></td>
+<td><strong>Stop lubrication</strong></td>
+<td><strong>Arresta lubrificazione</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>200003</strong></td>
+<td><strong>Reset alarms</strong></td>
+<td><strong>Resetta allarmi</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>200004</strong></td>
+<td><strong>Extra cycle</strong></td>
+<td><strong>Ciclo extra</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td>200005</td>
+<td>System start</td>
+<td><em>Avvio sistema</em></td>
+<td>SilentTrack, VipAir</td>
+</tr>
+<tr>
+<td>200006</td>
+<td>System stop</td>
+<td><em>Arresto sistema</em></td>
+<td>SilentTrack, VipAir</td>
+</tr>
+<tr>
+<td>200007</td>
+<td>System start/stop toggle</td>
+<td><em>Avvio/arresto sistema</em></td>
+<td>SilentTrack, VipAir</td>
+</tr>
+<tr>
+<td><strong>200010</strong></td>
+<td><strong>Update firmware</strong></td>
+<td><strong>Aggiorna firmware</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>200011</strong></td>
+<td><strong>Restart device</strong></td>
+<td><strong>Riavvia dispositivo</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td>200020</td>
+<td>Start zone 1</td>
+<td><em>Avvia zona 1</em></td>
+<td>SilentTrack</td>
+</tr>
+<tr>
+<td>200021</td>
+<td>Start zone 2</td>
+<td><em>Avvia zona 2</em></td>
+<td>SilentTrack</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="alarms-warnings-allarmi-e-avvisi">ALARMS &amp; WARNINGS / ALLARMI E AVVISI<a class="headerlink" href="#alarms-warnings-allarmi-e-avvisi" title="Permanent link">&para;</a></h2>
+<p>These IDs appear in event logs and in the active alarm/warning bitfields (variables 100015, 100016).</p>
+<p><em>Questi ID compaiono nei log eventi e nei campi allarmi/avvisi attivi (variabili 100015, 100016).</em></p>
+<h3 id="alarms-red-allarmi-rosso">Alarms (Red) / Allarmi (Rosso)<a class="headerlink" href="#alarms-red-allarmi-rosso" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Alarm (EN)</th>
+<th>Allarme (IT)</th>
+<th>Products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>60</strong></td>
+<td><strong>Low level</strong></td>
+<td><strong>Livello basso</strong></td>
+<td>All with level sensor</td>
+</tr>
+<tr>
+<td><strong>61</strong></td>
+<td><strong>Cycle timeout</strong></td>
+<td><strong>Timeout ciclo</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>62</strong></td>
+<td><strong>Motor overcurrent</strong></td>
+<td><strong>Sovracorrente motore</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Low voltage</td>
+<td><em>Tensione bassa</em></td>
+<td>All</td>
+</tr>
+<tr>
+<td>66</td>
+<td>High voltage</td>
+<td><em>Tensione alta</em></td>
+<td>All</td>
+</tr>
+<tr>
+<td>67</td>
+<td>Rotation sensor fault</td>
+<td><em>Sensore rotazione guasto</em></td>
+<td>All (with sensor)</td>
+</tr>
+<tr>
+<td>68</td>
+<td>PS already active</td>
+<td><em>Pressostato gia' attivo</em></td>
+<td>All</td>
+</tr>
+<tr>
+<td>69</td>
+<td>Pause timeout</td>
+<td><em>Timeout pausa</em></td>
+<td>All</td>
+</tr>
+<tr>
+<td>70</td>
+<td>Interval timeout</td>
+<td><em>Timeout intervallo</em></td>
+<td>All</td>
+</tr>
+<tr>
+<td>72</td>
+<td>Emergency button</td>
+<td><em>Pulsante emergenza</em></td>
+<td>SilentTrack, VipAir</td>
+</tr>
+<tr>
+<td>74</td>
+<td>Pressure timeout</td>
+<td><em>Timeout pressione</em></td>
+<td>VipAir, Maxtreme</td>
+</tr>
+<tr>
+<td>75</td>
+<td>Refill timeout</td>
+<td><em>Timeout ricarica</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>80-87</td>
+<td>Low pressure MP1-8 (EV on)</td>
+<td><em>Bassa pressione MP1-8</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>90-97</td>
+<td>High pressure MP1-8 (EV on)</td>
+<td><em>Alta pressione MP1-8</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>100-107</td>
+<td>Low residual pressure MP1-8</td>
+<td><em>Bassa pressione residua MP1-8</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>110-117</td>
+<td>Cycle sensor alert MP1-8</td>
+<td><em>Allarme sensore ciclo MP1-8</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>200-204</td>
+<td>LP sensor faults</td>
+<td><em>Guasti sensore LP</em></td>
+<td>All (with LP sensor)</td>
+</tr>
+<tr>
+<td>210-211</td>
+<td>Command timeouts</td>
+<td><em>Timeout comandi</em></td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+<h3 id="warnings-amber-avvisi-ambra">Warnings (Amber) / Avvisi (Ambra)<a class="headerlink" href="#warnings-amber-avvisi-ambra" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Warning (EN)</th>
+<th>Avviso (IT)</th>
+<th>Products</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>63</strong></td>
+<td><strong>Low voltage</strong></td>
+<td><strong>Tensione bassa</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>64</strong></td>
+<td><strong>High voltage</strong></td>
+<td><strong>Tensione alta</strong></td>
+<td>All</td>
+</tr>
+<tr>
+<td><strong>71</strong></td>
+<td><strong>Low level</strong></td>
+<td><strong>Livello basso</strong></td>
+<td>All with level sensor</td>
+</tr>
+<tr>
+<td>73</td>
+<td>Supply voltage failure</td>
+<td><em>Guasto alimentazione</em></td>
+<td>All</td>
+</tr>
+<tr>
+<td>120-127</td>
+<td>Incomplete cycle MP1-8</td>
+<td><em>Ciclo incompleto MP1-8</em></td>
+<td>VipAir</td>
+</tr>
+<tr>
+<td>205-207</td>
+<td>LP sensor warnings</td>
+<td><em>Avvisi sensore LP</em></td>
+<td>All (with LP sensor)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="how-the-dashboard-uses-this-come-la-dashboard-usa-questi-dati">How the Dashboard Uses This / Come la Dashboard Usa Questi Dati<a class="headerlink" href="#how-the-dashboard-uses-this-come-la-dashboard-usa-questi-dati" title="Permanent link">&para;</a></h2>
+<p>The drucs-v2 dashboard picks variables in this priority order for each metric box:</p>
+<p><em>La dashboard drucs-v2 seleziona le variabili in questo ordine di priorita' per ogni indicatore:</em></p>
+<h3 id="hours-box-indicatore-ore">Hours Box / Indicatore Ore<a class="headerlink" href="#hours-box-indicatore-ore" title="Permanent link">&para;</a></h3>
+<p><code>100100</code> (total motor seconds / 3600) → if missing, shows "No data"</p>
+<h3 id="cycles-box-indicatore-cicli">Cycles Box / Indicatore Cicli<a class="headerlink" href="#cycles-box-indicatore-cicli" title="Permanent link">&para;</a></h3>
+<ol>
+<li><code>100110-100113</code> sum → <strong>RailCycles</strong> (SilentTrack: 4 zones summed)</li>
+<li><code>100320-100327</code> sum → <strong>MicroPump Cycles</strong> (VipAir: 8 pumps summed)</li>
+<li><code>100101</code> → <strong>Pump Rotations</strong> (single counter)</li>
+<li><code>100052</code> → <strong>Lub. Pulses</strong> (fallback)</li>
+<li><code>100054</code> → <strong>Cycles</strong> (fallback)</li>
+</ol>
+<h3 id="level-box-indicatore-livello">Level Box / Indicatore Livello<a class="headerlink" href="#level-box-indicatore-livello" title="Permanent link">&para;</a></h3>
+<p><code>100017</code> → Level % gauge (0-100%)</p>
+<h3 id="will-go-empty-stima-esaurimento">Will Go Empty / Stima Esaurimento<a class="headerlink" href="#will-go-empty-stima-esaurimento" title="Permanent link">&para;</a></h3>
+<p>Calculated from alarm event #60 (low level) history — average days between refills, days since last refill.</p>
+<hr />
+<p><em>Document version 2.0 — 2026-02-17</em>
+<em>Versione documento 2.0 — 17-02-2026</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/DropsA-SpA" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

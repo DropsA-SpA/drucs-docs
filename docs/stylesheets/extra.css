@@ -1,0 +1,107 @@
+/* DRUCS docs custom styles */
+
+:root {
+  --md-primary-fg-color: #1a365d;
+  --md-accent-fg-color: #3182ce;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #2c5282;
+  --md-accent-fg-color: #63b3ed;
+}
+
+/* Product badges */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-bc { background: #ebf8ff; color: #2b6cb0; }
+.badge-br { background: #ebf8ff; color: #2b6cb0; }
+.badge-sm { background: #f0fff4; color: #276749; }
+.badge-st { background: #faf5ff; color: #6b46c1; }
+.badge-nv { background: #fffaf0; color: #c05621; }
+.badge-ma { background: #fff5f5; color: #c53030; }
+
+[data-md-color-scheme="slate"] .badge-bc,
+[data-md-color-scheme="slate"] .badge-br { background: #1a365d; color: #90cdf4; }
+[data-md-color-scheme="slate"] .badge-sm { background: #1c4532; color: #9ae6b4; }
+[data-md-color-scheme="slate"] .badge-st { background: #322659; color: #d6bcfa; }
+[data-md-color-scheme="slate"] .badge-nv { background: #652b19; color: #fbd38d; }
+[data-md-color-scheme="slate"] .badge-ma { background: #63171b; color: #feb2b2; }
+
+/* Status indicators */
+.status-ok { color: #38a169; }
+.status-alarm { color: #e53e3e; }
+.status-warning { color: #d69e2e; }
+.status-offline { color: #a0aec0; }
+
+/* Feature request form styling */
+.feature-form {
+  max-width: 640px;
+}
+
+.feature-form input,
+.feature-form textarea,
+.feature-form select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+
+/* Card grid on home page */
+.grid.cards > ul > li {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+/* ══════════════════════════════════════════
+   DUAL LANGUAGE: EN black, IT dark blue italic
+   Italian text is wrapped in <em> (markdown *...*)
+   ══════════════════════════════════════════ */
+
+/* Light theme: English = black, Italian = dark blue italic smaller */
+.md-content em {
+  color: #1a4a8a;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+/* Italian inside table cells */
+.md-content td em,
+.md-content th em {
+  color: #1a4a8a;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+/* Dark theme: Italian = lighter blue italic for contrast */
+[data-md-color-scheme="slate"] .md-content em {
+  color: #63a4e8;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+[data-md-color-scheme="slate"] .md-content td em,
+[data-md-color-scheme="slate"] .md-content th em {
+  color: #63a4e8;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+/* Ensure English (non-italic) text stays default black/white */
+.md-content p,
+.md-content li,
+.md-content td {
+  color: var(--md-default-fg-color);
+}
