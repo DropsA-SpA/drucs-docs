@@ -97,6 +97,7 @@
 | BC-37 | Matrix Document: Correct Errors and add Matrix description | Yan | Medium |
 | BC-40 | **Release FW v0.60** | Yan | Medium |
 | BC-46 | Move all repositories from 'SebDropsa' GitHub account to DropsA-SpA org | Yan | Medium |
+| BC-48 | **Fix S-00365 FW GitHub Actions workflow** — Current CI is broken due to missing Docker Hub credentials for `sebdropsa/stm32-build-env` (private image, no access to `sebdropsa` account). Steps to fix: (1) Create a Dropsa company Docker Hub account; (2) Log into `sebdropsa` Docker Hub and pull the image: `docker pull sebdropsa/stm32-build-env:latest`; (3) Tag and push to company account: `docker tag sebdropsa/stm32-build-env:latest dropsa/stm32-build-env:latest && docker push dropsa/stm32-build-env:latest`; (4) Create a Docker Hub Access Token on the company account; (5) Update GitHub secrets `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` in `DropsA-SpA/S-00365-firmware`; (6) Update workflow to pull from `dropsa/stm32-build-env:latest` | Yan | **HIGH** |
 
 ### Backlog
 
