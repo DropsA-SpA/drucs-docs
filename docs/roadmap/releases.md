@@ -44,6 +44,13 @@ New React-based dashboard deployed alongside the Angular v1 frontend.
 
 ---
 
+### v0.58.01 — February 2026 / *Febbraio 2026* — Hotfix
+
+#### Bug Fixes / *Correzioni Bug*
+- [BC-49] BLE heap exhaustion causes system reboot on startup with CAN bus — reverted `PRJ_BLE_MSG_APP_QUEUE_SIZE` from 5 to 2 / *Heap FreeRTOS esaurito all'avvio con CAN bus — ripristinato `PRJ_BLE_MSG_APP_QUEUE_SIZE` da 5 a 2*
+
+---
+
 ### v0.58 — January 2026 / *Gennaio 2026*
 
 #### Features / *Funzionalita'*
