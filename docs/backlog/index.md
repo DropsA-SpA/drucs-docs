@@ -89,6 +89,7 @@
 | BC-31 | Firmware fails to send alarm value in var 100016 via Bluetooth | Fabio | Medium |
 | BC-38 | Matrix: Bug fix on Bravo on SEP mode | Yan | Medium |
 | BC-39 | Release FW v0.59 | Yan | Medium |
+| **BC-49** | **BLE heap exhaustion causes system reboot on startup with CAN bus** — hotfix v0.58.01: reverted `PRJ_BLE_MSG_APP_QUEUE_SIZE` 5→2 | Yan | **HIGH** |
 
 ### To Do / *Da Fare*
 
@@ -111,7 +112,6 @@
 | BC-23 | System Optimization | Yan | Medium |
 | BC-24 | TOPLAND Touch Screen evaluation | Yan | Lowest |
 | BC-34 | ESP32 firmware disconnects after successful MTU 517 negotiation | Yan | **HIGH** |
-| **BC-49** | **[Hotfix] BLE heap exhaustion causes system reboot on startup with CAN bus** — `PRJ_BLE_MSG_APP_QUEUE_SIZE` increased from 2→5 combined with new CAN bus tasks exhausts FreeRTOS heap (64 KB) before BLE init completes. Fix: revert queue size to 2 or reduce Lubrication FSM stack (8192→6144 bytes). Affected: v0.59, CAN bus protocol only. | Yan | **HIGH** |
 
 ### Suspended / *Sospesi*
 
