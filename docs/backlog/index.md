@@ -61,9 +61,26 @@
 | INF-006 | **DB schema documentation** — No schema docs exist / *Documentazione schema DB — Non esiste documentazione schema* | BACKLOG |
 | INF-007 | Set `SEND_MAILS=false` on staging to prevent emails to real users / *Impostare `SEND_MAILS=false` su staging per evitare email a utenti reali* | TO DO |
 | INF-008 | **Staging gateway DNS** — Create `stg-s2.dropsa.com` endpoint for test devices / *DNS gateway staging — Creare endpoint `stg-s2.dropsa.com` per device di test* | TO DO |
-| INF-009 | **Test device pool** — Yan prepares 5-10 devices, register MAC addresses for staging / *Pool device test — Yan prepara 5-10 device, registra MAC address per staging* | WAITING (Yan) |
+| INF-009 | **Test device pool** — 10 devices ready (prod IDs 12762–12773). Will self-register on staging once INF-008 + GW-001 are done. See device list below. / *10 device pronti (ID prod 12762–12773). Si auto-registreranno su staging una volta completati INF-008 + GW-001.* | **READY** — waiting on INF-008 + GW-001 |
 | INF-010 | **Auto-provisioning on staging** — New gateway accepts unknown devices on stg only / *Auto-provisioning su staging — Il nuovo gateway accetta device sconosciuti solo su stg* | BLOCKED by GW-001 |
 | INF-011 | **Device Pool Manager on EngHelper** — Web panel to register test device MAC addresses, auto-sync to staging gateway/DB / *Pannello web su EngHelper per registrare MAC address device test, sync automatico verso gateway/DB staging* | TO DO |
+
+### INF-009 — Test Device Pool (Ready)
+
+Devices are already registered in **production**. Once `stg-s2.dropsa.com` (INF-008) and the new gateway (GW-001) are ready, point device firmware at staging — they will self-register automatically via auto-provisioning (INF-010).
+
+| # | Prod Device ID | MAC Address | Group |
+|---|---|---|---|
+| 1 | 12770 | `14:33:5c:25:a1:38` | Test Tiz |
+| 2 | 12769 | `14:33:5c:09:b1:a0` | Test Tiz |
+| 3 | 12772 | `38:18:2b:f6:6d:cc` | Test Tiz |
+| 4 | 12773 | `5c:01:3b:e0:f3:ac` | Test Tiz |
+| 5 | 12771 | `14:33:5c:28:df:7c` | BC4_AUT |
+| 6 | 12767 | `14:33:5c:28:bc:e4` | Test Yan |
+| 7 | 12768 | `14:33:5c:25:d4:c8` | Test Yan |
+| 8 | 12765 | `5c:01:3b:e0:f3:a4` | Test Yan |
+| 9 | 12766 | `5c:01:3b:e0:f3:38` | Test Yan |
+| 10 | 12762 | `14:33:5c:57:db:54` | Test Yan |
 
 ---
 

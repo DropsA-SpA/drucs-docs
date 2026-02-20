@@ -1285,6 +1285,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Infrastructure / Infrastruttura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inf-009-test-device-pool-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INF-009 — Test Device Pool (Ready)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1553,6 +1570,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure / Infrastruttura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inf-009-test-device-pool-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        INF-009 — Test Device Pool (Ready)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1908,8 +1942,8 @@
 </tr>
 <tr>
 <td>INF-009</td>
-<td><strong>Test device pool</strong> — Yan prepares 5-10 devices, register MAC addresses for staging / <em>Pool device test — Yan prepara 5-10 device, registra MAC address per staging</em></td>
-<td>WAITING (Yan)</td>
+<td><strong>Test device pool</strong> — 10 devices ready (prod IDs 12762–12773). Will self-register on staging once INF-008 + GW-001 are done. See device list below. / <em>10 device pronti (ID prod 12762–12773). Si auto-registreranno su staging una volta completati INF-008 + GW-001.</em></td>
+<td><strong>READY</strong> — waiting on INF-008 + GW-001</td>
 </tr>
 <tr>
 <td>INF-010</td>
@@ -1920,6 +1954,80 @@
 <td>INF-011</td>
 <td><strong>Device Pool Manager on EngHelper</strong> — Web panel to register test device MAC addresses, auto-sync to staging gateway/DB / <em>Pannello web su EngHelper per registrare MAC address device test, sync automatico verso gateway/DB staging</em></td>
 <td>TO DO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inf-009-test-device-pool-ready">INF-009 — Test Device Pool (Ready)<a class="headerlink" href="#inf-009-test-device-pool-ready" title="Permanent link">&para;</a></h3>
+<p>Devices are already registered in <strong>production</strong>. Once <code>stg-s2.dropsa.com</code> (INF-008) and the new gateway (GW-001) are ready, point device firmware at staging — they will self-register automatically via auto-provisioning (INF-010).</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Prod Device ID</th>
+<th>MAC Address</th>
+<th>Group</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>12770</td>
+<td><code>14:33:5c:25:a1:38</code></td>
+<td>Test Tiz</td>
+</tr>
+<tr>
+<td>2</td>
+<td>12769</td>
+<td><code>14:33:5c:09:b1:a0</code></td>
+<td>Test Tiz</td>
+</tr>
+<tr>
+<td>3</td>
+<td>12772</td>
+<td><code>38:18:2b:f6:6d:cc</code></td>
+<td>Test Tiz</td>
+</tr>
+<tr>
+<td>4</td>
+<td>12773</td>
+<td><code>5c:01:3b:e0:f3:ac</code></td>
+<td>Test Tiz</td>
+</tr>
+<tr>
+<td>5</td>
+<td>12771</td>
+<td><code>14:33:5c:28:df:7c</code></td>
+<td>BC4_AUT</td>
+</tr>
+<tr>
+<td>6</td>
+<td>12767</td>
+<td><code>14:33:5c:28:bc:e4</code></td>
+<td>Test Yan</td>
+</tr>
+<tr>
+<td>7</td>
+<td>12768</td>
+<td><code>14:33:5c:25:d4:c8</code></td>
+<td>Test Yan</td>
+</tr>
+<tr>
+<td>8</td>
+<td>12765</td>
+<td><code>5c:01:3b:e0:f3:a4</code></td>
+<td>Test Yan</td>
+</tr>
+<tr>
+<td>9</td>
+<td>12766</td>
+<td><code>5c:01:3b:e0:f3:38</code></td>
+<td>Test Yan</td>
+</tr>
+<tr>
+<td>10</td>
+<td>12762</td>
+<td><code>14:33:5c:57:db:54</code></td>
+<td>Test Yan</td>
 </tr>
 </tbody>
 </table>
@@ -2015,6 +2123,12 @@
 <td>Yan</td>
 <td>Medium</td>
 </tr>
+<tr>
+<td><strong>BC-49</strong></td>
+<td><strong>BLE heap exhaustion causes system reboot on startup with CAN bus</strong> — hotfix v0.58.01: reverted <code>PRJ_BLE_MSG_APP_QUEUE_SIZE</code> 5→2</td>
+<td>Yan</td>
+<td><strong>HIGH</strong></td>
+</tr>
 </tbody>
 </table>
 <h3 id="to-do-da-fare">To Do / <em>Da Fare</em><a class="headerlink" href="#to-do-da-fare" title="Permanent link">&para;</a></h3>
@@ -2045,6 +2159,12 @@
 <td>Move all repositories from 'SebDropsa' GitHub account to DropsA-SpA org</td>
 <td>Yan</td>
 <td>Medium</td>
+</tr>
+<tr>
+<td>BC-48</td>
+<td><strong>Fix S-00365 FW GitHub Actions workflow</strong> — Current CI is broken due to missing Docker Hub credentials for <code>sebdropsa/stm32-build-env</code> (private image, no access to <code>sebdropsa</code> account). Steps to fix: (1) Create a Dropsa company Docker Hub account; (2) Log into <code>sebdropsa</code> Docker Hub and pull the image: <code>docker pull sebdropsa/stm32-build-env:latest</code>; (3) Tag and push to company account: <code>docker tag sebdropsa/stm32-build-env:latest dropsa/stm32-build-env:latest &amp;&amp; docker push dropsa/stm32-build-env:latest</code>; (4) Create a Docker Hub Access Token on the company account; (5) Update GitHub secrets <code>DOCKERHUB_USERNAME</code> and <code>DOCKERHUB_TOKEN</code> in <code>DropsA-SpA/S-00365-firmware</code>; (6) Update workflow to pull from <code>dropsa/stm32-build-env:latest</code></td>
+<td>Yan</td>
+<td><strong>HIGH</strong></td>
 </tr>
 </tbody>
 </table>
