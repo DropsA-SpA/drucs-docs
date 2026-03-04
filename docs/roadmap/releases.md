@@ -26,6 +26,34 @@ New React-based dashboard deployed alongside the Angular v1 frontend.
 
 ## Firmware / Firmware
 
+### v0.59.02 — March 2026 / *Marzo 2026*
+
+#### Features / *Funzionalita'*
+- [BC-54] Add configurable Rotation Sensor Timeout parameter / *Aggiunta parametro configurabile timeout sensore rotazione*
+
+#### Bug Fixes / *Correzioni Bug*
+- [BC-53] Rotation Sensor Check bugfix / *Correzione controllo sensore rotazione*
+- [BC-52] Fix parvarfis in connection / *Correzione parvarfis nella connessione*
+
+---
+
+### v0.59.01 — February 2026 / *Febbraio 2026*
+
+#### Features / *Funzionalita'*
+- [BC-45] SMART 4 refactor: adapted lubrication FSM for SMART 4 hardware configuration / *Refactoring SMART 4: adattamento FSM lubrificazione per configurazione hardware SMART 4*
+- [BC-47] Check Rotation Sensor Switch: detect and report rotation sensor switch state / *Controllo interruttore sensore rotazione: rilevamento e segnalazione stato*
+- [BC-44] Move Number of Cycle and Cycle Timeout parameters to BASE product / *Spostamento parametri Numero Cicli e Timeout Ciclo al prodotto BASE*
+- [BC-30] LCD Number of Cycle and Cycle Timeout screen update / *Aggiornamento schermata LCD Numero Cicli e Timeout Ciclo*
+
+#### Bug Fixes / *Correzioni Bug*
+- [BC-49] BLE heap exhaustion causes system reboot on startup with CAN bus protocols / *Esaurimento heap BLE causa riavvio all'avvio con protocolli CAN bus*
+- [BC-43] Fix memory leak in LCD driver / *Correzione perdita memoria nel driver LCD*
+
+#### Refactor / *Refactoring*
+- [BC-38] Number of Cycle setting refactor in SEP/PROX input / *Refactoring impostazione numero cicli in ingresso SEP/PROX*
+
+---
+
 ### v0.59 — February 2026 / *Febbraio 2026*
 
 **Current production release** / *Rilascio produzione attuale*
