@@ -38,7 +38,7 @@ Each device's HTTP POST is processed synchronously: decrypt → parse → DB que
 
 ### 3. The PHP API Cannot Scale Horizontally / L'API PHP Non Scala Orizzontalmente
 
-No connection pooling (new DB connection per HTTP request), no middleware pipeline (auth/rate-limiting/validation are ad-hoc). Sessions not in Redis, so ECS horizontal scaling is blocked.
+`import-web-app` (the only production API, used by web and mobile) is based on stateless JWT with a Redis blacklist — authentication scales horizontally without issues. The real bottleneck is **connection pooling**: every HTTP request opens a new PDO connection to MariaDB. With multiple ECS tasks running in parallel, this rapidly exhausts the database's available connections. PHP sessions use the file-system, but this does not affect API routes (which are JWT-stateless); it only affects web routes if any are present.
 
 ### 4. The Database is a Shared Bottleneck / Il Database e' un Collo di Bottiglia Condiviso
 
@@ -72,6 +72,75 @@ The goal is a **generic IoT platform** that: / *L'obiettivo e' una piattaforma I
 3. **New devices get new protocol.** New firmware releases support MQTT alongside legacy HTTP.
 4. **Incremental migration.** Devices upgrade via OTA at their own pace.
 5. **Generic from day one.** Every new component must be device-type agnostic.
+
+---
+
+## Performance Architecture / Architettura Performance
+
+Analysis of the six critical performance bottlenecks in the current system, with file-level attribution and the target architecture.
+
+*Analisi dei sei colli di bottiglia critici nel sistema attuale, con attribuzione a livello di file e l'architettura target.*
+
+### Bottlenecks / Colli di Bottiglia
+
+#### Critical (immediate impact) / Critici (impatto immediato)
+
+**A. Missing composite index on `events` table**
+- File: `database/migrations/2019_09_03_092837_create_events_table.php`
+- `SELECT WHERE dev_id=? AND evt_time > ?` → full table scan on ~500M rows
+- Fix: `CREATE INDEX idx_events_device_time ON events (dev_id, evt_time DESC)` — 5 minutes
+
+**B. N+1 queries on event relations**
+- File: `GetDeviceEventsWithRelationsCriteria.php` (lines 24–32)
+- 100 events × 4–8 relations = 400–800 queries per single dashboard API call
+- Fix: DataLoader / eager loading in NestJS (Phase 4)
+
+**C. Synchronous gateway with 150+ queries per heartbeat**
+- Files: `DataProcessorServiceImpl.java` + `ValueServiceImpl.java`
+- 5s heartbeat × 50 variables = 150+ synchronous DB queries → DB exhaustion at 500+ devices
+- Fix: async SQS batch processor in NestJS bridge (Phase 3)
+
+**D. SSE polling every 10 seconds**
+- File: `SseStreamController.php` (line 119: `sleep(10)`)
+- 1,000 clients × 5 devices × 6 polls/min = 30,000 queries/minute with no new data
+- Fix: WebSocket event-driven push (Phase 4)
+
+#### High / Alti
+
+**E. Read-Modify-Write for device values** — 50 SELECT + 50 UPDATE per heartbeat, no batch UPSERT
+
+**F. Sequential batch jobs** — `CalculateDeviceStatusStatisticJob.php` runs sequentially across 1,000 devices
+
+### Before / After — Architecture / Architettura Prima/Dopo
+
+```
+BEFORE (2014 architecture):
+  Device → HTTP sync POST → Gateway → 150+ DB queries → response → repeat every 5s
+  Client → SSE → PHP polls DB every 10s → repeat per client
+
+AFTER (Phase 3–4):
+  Device → HTTP POST → NestJS Bridge
+                         ├─ AES decrypt (sync)
+                         ├─ Publish to SQS (async, <1ms)
+                         └─ ACK immediately (device does not wait for DB)
+
+  SQS "device.telemetry":
+    → Batch Processor  (1s window, bulk INSERT TimescaleDB)
+    → State Updater    (Redis HSET device:{id} — no read-modify-write)
+    → WebSocket Emitter (push to clients)
+```
+
+### Fix Strategy by Phase
+
+| Phase | Fix | Impact |
+|---|---|---|
+| **Phase 2 (immediate)** | Composite index `(dev_id, evt_time)` on `events` | Eliminates full table scan on ~500M rows — critical |
+| **Phase 2 (immediate)** | Redis cache for device variable values (30min TTL) | Eliminates repeated DB reads per dashboard refresh |
+| **Phase 3** | Async SQS dispatch from NestJS bridge | Device ACK in <5ms, DB writes decoupled |
+| **Phase 3** | Redis HSET for device current state | Replaces SELECT+UPDATE per variable |
+| **Phase 4** | WebSocket event-driven (Socket.IO) | Replaces SSE polling — eliminates 30K queries/min at 1K clients |
+| **Phase 4** | DataLoader pattern on all relations | Eliminates N+1: 400–800 queries → 1 batch per relation |
+| **Phase 4** | TimescaleDB hypertable `(device_id, time)` | 10–100x faster time-range queries vs MariaDB |
 
 ---
 
@@ -134,12 +203,17 @@ These items run in parallel with Phase 1 and have no phase dependency.
 ### Firmware / Firmware
 
 - [ ] **[BC-48]** Fix CI pipeline — missing Docker Hub credentials for `sebdropsa/stm32-build-env` / *Riparare pipeline CI*
-- [ ] **[BC-34]** BLE disconnect after MTU 517 negotiation — random BLE session drops / *Disconnessione BLE dopo negoziazione MTU 517*
+- [ ] **[BC-34]** ⚠️ **P0 — BLOCKER for Phase 3** BLE disconnect after MTU 517 negotiation — random BLE session drops / *Disconnessione BLE dopo negoziazione MTU 517 — **P0, blocca Fase 3***
+- [ ] **[BC-16]** ⚠️ **P0 — BLOCKER for Phase 5** BLE disconnect during OTA update — if a device loses WiFi permanently, BLE OTA is the only upgrade path; this bug makes it unreliable / *Disconnessione BLE durante OTA — **P0, prereq Fase 5***
 - [ ] **[C2]** Re-enable OTA CRC check (`#if 0` → `#if 1`) in both firmware and bootloader / *Riabilitare CRC check OTA*
 
 ### API & Platform / API e Piattaforma
 
 - [ ] **[BC-14]** Web-to-mobile settings sync not working — parameter changed on web not reflected in Flutter app / *Sincronizzazione impostazioni web→mobile non funzionante*
+- [ ] **[PUSH]** Verify end-to-end push notification delivery via SNS → APNs/FCM:
+  `AwsSnsService.php` already implements `createPlatformEndpoint()` for both platforms (Android/FCM and iOS/APNs), `createTopic()` / `subscribe()` / `publish()`.
+  Gap: confirm alarm events are correctly wired to `SNS publish()` in the event pipeline.
+  Estimated: 0.5–1 day audit + fix if needed. / *Verificare la delivery push end-to-end via SNS → APNs/FCM: AwsSnsService.php già implementa createPlatformEndpoint(). Gap: verificare il collegamento eventi allarme → SNS publish().*
 
 ---
 
@@ -151,8 +225,11 @@ Fix infrastructure bottlenecks without rewriting application code.
 
 *Correggere i colli di bottiglia infrastrutturali senza riscrivere il codice applicativo.*
 
+- [ ] **Add composite index `(dev_id, evt_time DESC)` on `events` table** — eliminates full table scan on ~500M rows, critical for all dashboard queries (`SELECT WHERE dev_id=? AND evt_time > ?`). Fix: 5 minutes. / *Indice composito su events — elimina full table scan critico*
+- [ ] **Redis caching for device variable values** (30min TTL) — eliminates repeated DB reads per dashboard refresh; keys: `device:{id}:vars` / *Cache Redis per valori variabili dispositivo*
+- [ ] **Review SSE batch size and polling interval** (currently `BATCH_SIZE=100`, `sleep(10)` in `SseStreamController.php`) — reduce unnecessary polling load / *Ottimizzare batch SSE e intervallo polling*
 - [ ] Add RDS Proxy for `import-web-app` — connection pooling (currently new DB connection per HTTP request) / *Aggiungere RDS Proxy — connection pooling*
-- [ ] Move PHP sessions to Redis — enables horizontal ECS scaling / *Spostare le sessioni PHP su Redis*
+- [ ] Move PHP sessions to Redis *(low priority — API routes are JWT-stateless; only affects web routes if present)* / *Spostare le sessioni PHP su Redis (bassa priorità — le route API sono JWT-stateless)*
 - [ ] Enable ECS auto-scaling on all services (`enable_autoscaling = false` → `true`) / *Abilitare ECS auto-scaling*
 - [ ] Increase ECS task sizes (1 vCPU / 2 GB) for headroom / *Aumentare dimensioni task ECS*
 - [ ] Enable RDS storage encryption (`storage_encrypted = true`) / *Abilitare crittografia storage RDS*
@@ -166,7 +243,10 @@ Fix infrastructure bottlenecks without rewriting application code.
 
 Replace the stalled Java gateway (`drucs-gateway-new`) with a NestJS legacy bridge. Existing devices need zero changes.
 
-*Effort: 3–4 days / Impegno: 3–4 giorni*
+*Effort: 4–5 days / Impegno: 4–5 giorni*
+
+> **⚠️ Prerequisites before starting Phase 3:**
+> - **BC-34 resolved** — BLE disconnects after MTU 517 make the offline field-technician workflow (Mode 2) unreliable. BLE is the primary control path when WiFi is unavailable; this is a P0 blocker.
 
 *Sostituire il gateway Java fermo (`drucs-gateway-new`) con un bridge NestJS legacy. I dispositivi esistenti non richiedono modifiche.*
 
@@ -177,35 +257,36 @@ EXISTING DEVICES              NEW DEVICES
      v                            v
 +-------------------+      +--------------------+
 |  LEGACY BRIDGE    |      |  AWS IoT Core      |
-|  (NestJS)         |      |  (Managed MQTT)    |
-|  - Accepts POST   |      |  - X.509 certs     |
-|  - Decrypts AES   |      |  - Device shadow   |
-|  - Translates     |      |  - Rules engine    |
+|  (NestJS)         |      |  - X.509 certs     |
+|  - AES decrypt    |      |  - Device Shadow   |
+|  - ACK <5ms       |      |  - Rules Engine    |
 +---------+---------+      +---------+----------+
           |                          |
           +-------------+------------+
                         v
              +--------------------+
-             |  MESSAGE BUS       |
-             |  (SQS/EventBridge) |
-             |  Unified format:   |
-             |  { deviceId,       |
-             |    deviceType,     |
-             |    timestamp,      |
-             |    telemetry: {},  |
-             |    commands: [] }  |
+             |  SQS               |
+             |  device.telemetry  |
              +---------+----------+
+                       |
+         +-------------+-------------+
+         v             v             v
+   Batch Processor  State Updater  WS Emitter
+   (bulk INSERT    (Redis HSET    (Socket.IO
+    TimescaleDB)    device:{id})   push)
 ```
 
-The key insight: existing devices don't change. The bridge speaks their protocol but translates everything into the new unified format internally.
+The key insight: existing devices don't change. The bridge speaks their protocol but ACKs immediately (async SQS publish) — the device never waits for DB writes.
 
-*Il punto chiave: i dispositivi esistenti non devono essere modificati. Il bridge parla il loro protocollo ma traduce internamente tutto nel formato unificato.*
+*Il punto chiave: i dispositivi esistenti non devono essere modificati. Il bridge parla il loro protocollo e risponde immediatamente (async SQS publish) — il dispositivo non attende la scrittura su DB.*
 
 - [ ] Build NestJS legacy bridge — accepts the same HTTP/AES POST devices currently send / *Costruire il bridge NestJS legacy*
 - [ ] AES-128-CFB decrypt/encrypt matching current device protocol / *Decifratura/cifratura AES-128-CFB compatibile*
+- [ ] **Async SQS publish** from NestJS bridge — device receives ACK before DB write (eliminates 150+ sync queries per heartbeat) / *Pubblicazione SQS asincrona — ACK immediato al dispositivo*
+- [ ] **Batch processor consumer**: accumulate 1s window, bulk INSERT TimescaleDB / *Consumer batch: finestra 1s, bulk INSERT TimescaleDB*
+- [ ] **Redis HSET** for device current state — replaces SELECT+UPDATE per variable (sub-ms reads) / *Redis HSET per stato corrente dispositivo*
 - [ ] Device registry service (lookup AES keys, device configs) / *Servizio registro dispositivi*
 - [ ] Command queue per device (replaces synchronous DB `commands` table) / *Coda comandi per dispositivo*
-- [ ] Publish unified internal message format to SQS/EventBridge / *Pubblicare il formato messaggi unificato su SQS/EventBridge*
 - [ ] Load test: simulate 1,000 devices at 5s heartbeat / *Test di carico: simulare 1.000 dispositivi a heartbeat 5s*
 - [ ] Decommission `drucs-gateway-new` Java service after validation / *Dismettere il servizio Java `drucs-gateway-new`*
 
@@ -213,18 +294,21 @@ The key insight: existing devices don't change. The bridge speaks their protocol
 
 ## Phase 4: Core API Modernization / Modernizzazione API Core
 
-Replace `import-web-app` (Laravel 12, 127 REST endpoints, 12 cron tasks, 8 SQS jobs) with a modular NestJS API.
-Existing Angular v2 and Flutter clients must continue working via a v1 compatibility layer throughout the migration.
+Modernize the API layer using the **Strangler Fig pattern** — NestJS is added alongside Laravel, not as a big-bang replacement. Laravel 12 (`import-web-app`) continues serving all existing v1 endpoints. NestJS takes ownership of new capabilities only: the WebSocket gateway (real-time), v2 endpoints (analytics, device shadow sync, fleet management), and the async SQS processor for device events.
 
-*Effort: 25–35 days / Impegno: 25–35 giorni*
+This approach reduces risk significantly: instead of rewriting 127 REST endpoints + 12 cron + 8 SQS jobs in a single effort (25–35 days), the core NestJS layer is operational in **10–15 days**. Laravel endpoints are deprecated incrementally, endpoint by endpoint, as v2 equivalents are validated in production.
 
-*Sostituire `import-web-app` con un'API NestJS modulare. I client Angular v2 e Flutter devono continuare a funzionare tramite un livello di compatibilita' v1.*
+*Effort: 10–15 days (core NestJS layer) + incremental Laravel migration / Impegno: 10–15 giorni (layer NestJS core) + migrazione incrementale Laravel*
+
+> **Frontend note:** The web frontend has already converged on **React 19+** (`drucs-v2`, in production at `app.dropsa.app/v2/`). References to Angular 18+ as a target are superseded — all new frontend work targets React 19+. The WebSocket gateway (Socket.IO) introduced in this phase is the critical enabler for the real-time fleet view in Mode 3 (mobile online), which currently relies on 60-second polling.
+
+*Modernizzazione API tramite pattern Strangler Fig: NestJS affianca Laravel (non lo sostituisce in un big-bang). Laravel mantiene gli endpoint v1; NestJS aggiunge WebSocket, endpoint v2 e processing SQS asincrono. Effort ridotto da 25–35 giorni a 10–15 giorni per il layer core.*
 
 **Key design decisions / Decisioni progettuali chiave:**
 
 1. **Device-type agnostic** — the API knows "devices" with "parameters" and "telemetry streams", not "lubrication pumps". Product logic lives in configuration, not code.
 2. **Multi-tenant from day one** — companies, users, device groups scoped with proper authorization.
-3. **Backwards compatible** — v1 compat layer serves existing Angular/Flutter API contracts exactly.
+3. **Backwards compatible** — Laravel v1 continues serving existing React (drucs-v2) + Flutter API contracts without interruption.
 4. **WebSocket for real-time** — clients subscribe to device telemetry streams and receive live updates.
 
 **Database migration / Migrazione database:**
@@ -236,20 +320,25 @@ Existing Angular v2 and Flutter clients must continue working via a v1 compatibi
 | Device state cache | **Redis** (ElastiCache HA) | Real-time last-known-state |
 | Firmware binaries | **S3** (unchanged) | Already working |
 
+**NestJS core layer (new capabilities):**
+- [ ] **WebSocket gateway (Socket.IO) — event-driven push** on state change, no polling — live device telemetry for web and mobile — **critical for Mode 3 real-time** / *Gateway WebSocket event-driven — critico per Mode 3 real-time*
 - [ ] Auth module (JWT + bcrypt + refresh tokens) / *Modulo autenticazione*
-- [ ] Device module (CRUD, registry, variable/parameter read-write) / *Modulo dispositivi*
-- [ ] Event module (history, filtering, pagination, SSE → WebSocket) / *Modulo eventi*
+- [ ] Device module v2 (device shadow sync, fleet management endpoints) / *Modulo dispositivi v2*
+- [ ] Event module v2 (analytics, filtering, pagination) + **DataLoader pattern** to eliminate N+1 queries (100 events × 4–8 relations = 400–800 queries per API call → 1 batched query per relation) / *Modulo eventi v2 + DataLoader per eliminare N+1*
 - [ ] Firmware module (upload, versioning, OTA trigger) / *Modulo firmware*
 - [ ] User/company module with multi-tenant authorization / *Modulo utenti/aziende multi-tenant*
-- [ ] Migrate 12 cron tasks to NestJS scheduled tasks or Lambda / *Migrare 12 cron task*
-- [ ] Migrate 8 SQS jobs (general, emails, event-report, summary-report, device-events) / *Migrare 8 job SQS*
-- [ ] WebSocket gateway (Socket.IO) — live device telemetry for web and mobile / *Gateway WebSocket*
+- [ ] Async SQS processor for device events (replaces synchronous PHP consumers) / *Processore SQS asincrono per eventi device*
 - [ ] Alert engine (threshold rules, notifications) / *Motore allarmi*
-- [ ] v1 compatibility layer — serve existing Angular v2 + Flutter API contracts exactly / *Livello compatibilita' v1*
-- [ ] API documentation (Swagger/OpenAPI) / *Documentazione API*
-- [ ] TimescaleDB for telemetry time-series (replaces relational telemetry tables) / *TimescaleDB*
+- [ ] API documentation v2 (Swagger/OpenAPI) / *Documentazione API v2*
+- [ ] **TimescaleDB hypertable** on `(device_id, time)` + **continuous aggregates** for dashboard query performance (10–100x faster for time-range queries vs relational MariaDB) / *TimescaleDB hypertable + aggregate continue per performance dashboard*
+- [ ] **Redis as source of truth for device current state** — all frequent reads from Redis HSET (sub-ms), not DB / *Redis come source of truth per stato corrente dispositivo*
 - [ ] Prisma schema + migrations / *Schema Prisma + migrazioni*
-- [ ] Sunset `import-web-app` after full validation / *Dismettere `import-web-app`*
+
+**Laravel incremental migration (existing v1 endpoints):**
+- [ ] Laravel (`import-web-app`) continues serving v1 — React (drucs-v2) + Flutter API contracts unchanged / *Laravel continua a servire v1 — nessun impatto su React + Flutter*
+- [ ] Migrate 12 cron tasks to NestJS scheduled tasks or Lambda (incremental) / *Migrare 12 cron task (incrementale)*
+- [ ] Migrate 8 SQS jobs (general, emails, event-report, summary-report, device-events) (incremental) / *Migrare 8 job SQS (incrementale)*
+- [ ] Incremental deprecation — sunset each Laravel endpoint as the v2 NestJS equivalent is validated / *Deprecazione incrementale endpoint Laravel*
 
 ---
 
@@ -261,7 +350,20 @@ Add MQTT support to new device firmware while maintaining HTTP/AES as fallback f
 
 *Aggiungere il supporto MQTT al firmware mantenendo HTTP/AES come fallback per tutti i dispositivi installati.*
 
-### AWS IoT Core Setup
+> **Decision / Decisione:** AWS IoT Core selected as MQTT broker for new devices.
+> Rationale: managed service, zero operational overhead at current device scale, native
+> integration with existing AWS infrastructure (IAM, SQS, Lambda, Rules Engine).
+
+**Unified flow via SQS — both device types share the same processing path:**
+
+```
+New MQTT device  → AWS IoT Core → Rules Engine → SQS device.telemetry → Batch Processor
+Legacy device    → NestJS Bridge              → SQS device.telemetry → Batch Processor
+
+Single unified processing path via SQS — no separate consumer per protocol.
+```
+
+### AWS IoT Core Setup (if AWS IoT Core is chosen)
 
 | Component | Purpose |
 |---|---|
@@ -310,6 +412,8 @@ ESP32 AT Commands             ESP32 with MQTT client
 - **Phase 5b (full modernization):** Custom ESP32 firmware with ESP-IDF MQTT client — full MQTT 5.0, X.509 certs, QoS 1/2
 
 ### Tasks
+
+> **⚠️ Prerequisite:** BC-16 (BLE OTA disconnect) must be resolved before Phase 5. If a deployed device loses WiFi permanently, BLE OTA is the only upgrade path to get it on the new firmware. BC-16 makes this path unreliable.
 
 - [ ] AWS IoT Core Terraform modules (things, certificates, policies) / *Moduli Terraform IoT Core*
 - [ ] MQTT topic structure + IoT Core rules / *Struttura topic MQTT + regole*
@@ -372,12 +476,65 @@ The dashboard renders device types from JSON configuration — no per-product fr
 
 ---
 
-## Phase 7: Advanced Analytics / Analisi Avanzata
+## Phase 7: Advanced Analytics + Predictive Maintenance / Analisi Avanzata e Manutenzione Predittiva
 
-- [ ] Predictive maintenance models / *Modelli manutenzione predittiva*
+*Effort: 15–20 days / Impegno: 15–20 giorni*
+
+### Available telemetry features (already collected by firmware)
+
+The DRUCS firmware telemetry struct already captures the five key features for predictive maintenance — no new sensor work required:
+
+| Field | Unit | Predictive signal |
+|---|---|---|
+| `current` | A | Motor bearing wear → abnormal current draw |
+| `pressure` | Bar | Pipe blockage → pressure drop |
+| `temperature` | °C | Motor overheating → temperature drift |
+| `rotations` | count | Lubricant consumption rate deviation |
+| `voltage` | V | Power supply anomalies |
+
+These are stored as time-series in TimescaleDB (Phase 4), which serves as the feature store for all ML pipelines.
+
+### Step 1 — Statistical anomaly detection (no ML, no training data)
+
+Z-score rolling window on `current`, `pressure`, and `temperature`. Flags values deviating > 3σ from the 7-day moving average per device. Works from day one without historical training data. Implementable as a Python Lambda or lightweight FastAPI microservice on ECS.
+
+### Step 2 — ML pipeline
+
+| Component | Technology |
+|---|---|
+| Runtime | Python 3.12, FastAPI microservice on ECS |
+| Anomaly detection | Isolation Forest (unsupervised — no labels required) |
+| Consumption forecasting | Prophet (handles seasonality and trends) |
+| Model registry | MLflow (version tracking, metrics, artifact storage) |
+| Feature store | TimescaleDB continuous aggregates |
+| Inference trigger | EventBridge schedule + SQS event queue |
+
+### Step 3 — OPC-UA / PLC integration
+
+DRUCS already supports Modbus, CAN, IO-Link, and J1939 at the firmware level. For integration with Siemens PLCs, ABB drives, or SCADA systems (Ignition, WinCC), **OPC-UA** is the industrial de facto standard. If EMQX is adopted in Phase 5, OPC-UA protocol bridges are available natively. With AWS IoT Core, this requires IoT SiteWise (expensive add-on). Evaluate based on customer SCADA requirements.
+
+### Data Retention Strategy
+
+With ~16K records/device in ring buffer and fleet-scale device counts, TimescaleDB volume can grow rapidly without a retention policy:
+
+| Tier | Retention | Storage |
+|---|---|---|
+| Raw telemetry | 90 days | TimescaleDB (hot) |
+| Hourly aggregates | 2 years | TimescaleDB continuous aggregates |
+| Daily aggregates | Indefinite | TimescaleDB compressed |
+| Cold archive | Indefinite | S3 (Parquet via TimescaleDB tiered storage) |
+
+### Tasks
+
+- [ ] Data retention policy — raw 90d, hourly aggregates 2y, S3 cold tier / *Policy retention dati*
+- [ ] TimescaleDB continuous aggregates for dashboard query performance / *Aggregate continue TimescaleDB*
+- [ ] Statistical anomaly detection service (Z-score rolling on current/pressure/temperature, Python Lambda) / *Servizio anomaly detection statistica*
+- [ ] Python FastAPI ML microservice on ECS (Isolation Forest + Prophet) / *Microservizio ML Python FastAPI su ECS*
+- [ ] MLflow model registry + training pipeline / *Registry modelli MLflow + pipeline training*
 - [ ] Fleet-level analytics and reporting / *Analisi e reportistica a livello flotta*
-- [ ] Lubricant consumption optimization / *Ottimizzazione consumo lubrificante*
-- [ ] AI-assisted troubleshooting / *Risoluzione problemi assistita da AI*
+- [ ] Lubricant consumption optimization (Prophet-based forecasting per device) / *Ottimizzazione consumo lubrificante*
+- [ ] OPC-UA bridge evaluation — EMQX native vs IoT SiteWise — for PLC/SCADA integration / *Valutazione bridge OPC-UA per integrazione PLC/SCADA*
+- [ ] AI-assisted troubleshooting (LLM-based diagnostic from event history + anomaly context) / *Diagnostica assistita da AI*
 
 ---
 
@@ -386,22 +543,22 @@ The dashboard renders device types from JSON configuration — no per-product fr
 ```
 Week  1-2   Phase 0: Security Fixes          (1-2 days actual work)
 Week  3-6   Phase 2: Cloud Scalability        (2-3 days actual work)
-Week  4-8   Phase 3: Protocol Bridge          (3-4 days actual work)
-Week  6-12  Phase 4: New NestJS API           (25-35 days actual work)
-Week 10-16  Phase 5: MQTT + Firmware          (15-19 days actual work)
-Week 16-22  Phase 6: Generic Dashboard        (10-12 days actual work)
+Week  4-8   Phase 3: Protocol Bridge          (4-5 days actual work)
+Week  6-10  Phase 4: NestJS core layer        (10-15 days actual work, then incremental)
+Week  8-14  Phase 5: MQTT + Firmware          (15-19 days actual work)
+Week 14-20  Phase 6: Generic Dashboard        (10-12 days actual work)
 ```
 
 | Phase | Cloud Work | Firmware Work | Total Days |
 |---|---|---|---|
 | Phase 0: Security | 1 day | 0.5 days | 1.5 days |
 | Phase 2: Scalability | 2 days | — | 2 days |
-| Phase 3: Protocol Bridge | 4 days | — | 4 days |
-| Phase 4: New API | 12 days | — | 12 days |
+| Phase 3: Protocol Bridge | **5 days** | — | 5 days |
+| Phase 4: NestJS core layer | 10–15 days | — | 10–15 days |
 | Phase 5: MQTT Cloud | 4 days | — | 4 days |
 | Phase 5: Firmware MQTT | — | 15 days | 15 days |
 | Phase 6: Dashboard | 12 days | — | 12 days |
-| **TOTAL** | **35 days** | **15.5 days** | **~50 days** |
+| **TOTAL** | **~32–38 days** | **15.5 days** | **~48–54 days** |
 
 Calendar time: **~5–6 months** (accounting for testing, hardware validation, staged OTA rollout, and non-consecutive work days).
 
@@ -419,7 +576,7 @@ Calendar time: **~5–6 months** (accounting for testing, hardware validation, s
 | Security | JWT auth, zero-IV AES on device | bcrypt, TLS mutual auth, X.509 certs |
 | Scalability | ~500 devices max | 100,000+ devices (IoT Core) |
 | Real-time dashboard | 5s poll via SSE | Live WebSocket streaming |
-| API | 640 PHP files, Laravel 12 | Modular NestJS with TypeScript |
+| API | 640 PHP files, Laravel 12 | NestJS (WebSocket + v2) + Laravel (v1, incremental deprecation) |
 | Database | Single MariaDB, no pooling | PostgreSQL + TimescaleDB + Redis HA |
 | New device types | Requires code changes | JSON configuration only |
 | Development velocity | Dependent on Capaciteam | Internal with Claude Code |
@@ -433,7 +590,7 @@ Calendar time: **~5–6 months** (accounting for testing, hardware validation, s
 | Current Repo | Fate | Replacement |
 |---|---|---|
 | `drucs-gateway-new` (Java) | Sunset after Phase 3 | Legacy Bridge (NestJS) + IoT Core |
-| `frontend-web` (Angular) | Evolve in Phase 6 | Same repo, upgraded to generic dashboard |
+| `frontend-web` (Angular 17) | **Retired** — replaced by `drucs-v2` | `drucs-v2` (React 19+) — generic dashboard in Phase 6 |
 | `mobile` (Flutter) | Keep, update API calls | Phase 4 v1 compat layer → native v2 |
 | `drucs-iac` (Terraform) | Extend | Add IoT Core, TimescaleDB, new ECS services |
 | `import-web-app` (Laravel) | Sunset after Phase 4 | NestJS API (127 endpoints, 12 cron, 8 SQS jobs) |
@@ -446,14 +603,17 @@ Calendar time: **~5–6 months** (accounting for testing, hardware validation, s
 | Layer | Current | Target |
 |---|---|---|
 | Device → Cloud | HTTP/1.0 + AES-128 | MQTT 3.1.1/5.0 + TLS 1.3 |
-| Cloud broker | Java Spring Boot (custom) | AWS IoT Core (managed) |
+| Cloud broker | Java Spring Boot (custom) | **AWS IoT Core** (managed MQTT) |
+| Internal message bus | SQS (5 existing queues) | SQS (unchanged + new `device.telemetry` queue) |
+| Push notifications | SNS → Firebase/APNs | SNS (unchanged — verify end-to-end wiring) |
 | API backend | PHP 8.4 (Laravel 12) | NestJS (TypeScript) |
 | API auth | JWT (tymon/jwt-auth v2) + Redis blacklist | JWT + bcrypt + Redis sessions |
 | Database (config) | MariaDB 10.11 | PostgreSQL 16 |
-| Database (telemetry) | MariaDB (same instance) | TimescaleDB (on PostgreSQL) |
+| Database (telemetry) | MariaDB (same instance) | TimescaleDB hypertable on `(device_id, time)` |
+| Device state cache | DB read per request | **Redis HSET** `device:{id}` (sub-ms) |
 | Cache | Redis micro (no HA) | Redis HA (multi-AZ, encrypted) |
-| Real-time (clients) | SSE polyfill | WebSocket (Socket.IO) |
-| Frontend | Angular 17 | Angular 18+ (generic dashboard) |
+| Real-time (clients) | SSE polling every 10s | **WebSocket** (Socket.IO, event-driven) |
+| Frontend | Angular 17 (retired — replaced by drucs-v2) | **React 19** + Vite + TanStack Query + shadcn/ui (already in production at app.dropsa.app/v2/) |
 | Mobile | Flutter 3.32 | Flutter (updated API client) |
 | Device auth | AES shared key | X.509 mutual TLS |
 | Device firmware | ESP-AT + custom HTTP | ESP-AT MQTT or ESP-IDF custom |
@@ -471,7 +631,7 @@ Calendar time: **~5–6 months** (accounting for testing, hardware validation, s
 | ESP-AT MQTT support is limited | Medium | Medium | Fall back to custom ESP-IDF firmware (Phase 5b) |
 | OTA brick risk during firmware migration | Low | Critical | Bootloader always preserves last-known-good image |
 | TimescaleDB migration data loss | Low | High | Parallel-write during migration, verify before cutover |
-| Existing Angular/Flutter breaks with new API | Medium | High | v1 compat layer serves old API format exactly |
+| React (drucs-v2) / Flutter breaks with new API | Medium | High | Laravel v1 continues serving existing API contracts; NestJS v2 endpoints are additive |
 | AWS IoT Core regional limits | Low | Medium | eu-west-2 supports 500K connections per account |
 
 ---
