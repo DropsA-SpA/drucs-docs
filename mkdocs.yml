@@ -90,6 +90,7 @@ nav:
     - VipAir 4.0: products/vipair.md
   - Roadmap:
     - Development Roadmap: roadmap/index.md
+    - Modernization Roadmap v2: roadmap/modernization-v2.md
     - Release Notes: roadmap/releases.md
   - Field Engineers:
     - Getting Started: field/index.md
