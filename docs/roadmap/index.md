@@ -11,7 +11,7 @@
 | Phase / *Fase* | Status / *Stato* | Description / *Descrizione* |
 |---|---|---|
 | **Phase 0** | **DONE** | *Security audit + access lockdown / Audit sicurezza + blocco accessi* |
-| **Phase 1** | **IN PROGRESS** | *Web v2 dashboard (React) / Dashboard web v2 (React)* |
+| **Phase 1** | **IN PROGRESS** | *Web dashboard — Angular (`frontend-web`) / Dashboard web Angular* |
 | **Active Fixes** | **ONGOING** | *Parallel bug-fix track / Track bug fix parallelo* |
 | **Phase 2** | Planned / *Pianificata* | *Infrastructure & cloud scalability / Infrastruttura e scalabilita' cloud* |
 | **Phase 3** | Planned / *Pianificata* | *Protocol bridge — legacy NestJS bridge replaces Java gateway / Bridge protocollo* |
@@ -166,24 +166,25 @@ AFTER (Phase 3–4):
 
 ---
 
-## Phase 1: Web v2 Dashboard (IN PROGRESS) / Dashboard Web v2 (IN CORSO)
+## Phase 1: Web Dashboard — Angular (IN PROGRESS) / Dashboard Web Angular (IN CORSO)
 
-The new React-based dashboard replacing the Angular v1 frontend. Consumes the existing `import-web-app` API (v1 endpoints).
+The `frontend-web` Angular dashboard — the maintained web frontend. Consumes the existing `import-web-app` API (v1 endpoints).
 
-*La nuova dashboard basata su React che sostituisce il frontend Angular v1. Usa l'API `import-web-app` esistente (endpoint v1).*
+*Il dashboard Angular `frontend-web` — il frontend web mantenuto. Usa l'API `import-web-app` esistente (endpoint v1).*
 
 > **Note / Nota:** The current dashboard uses polling (variables refreshed every 60s via `import-web-app`). Live WebSocket streaming will be available in Phase 4. / *La dashboard attuale usa il polling. Lo streaming WebSocket live sara' disponibile in Fase 4.*
 
-### Completed / Completato
+### Target Features / Funzionalità Target
 
-- [x] Dark theme glass UI with readable text / *UI vetro tema scuro con testo leggibile*
-- [x] Clickable summary strip (Total/OK/Alarm/Warning/Inactive/Offline filters) / *Barra riepilogo cliccabile con filtri*
-- [x] Full-width device card list with status, level gauge, cycle counters / *Lista schede dispositivo a larghezza piena*
-- [x] Problems panel (alarm >2h, offline >24h detection) / *Pannello problemi (allarme >2h, offline >24h)*
-- [x] Predictive LubeOut (estimates when lubricant runs out) / *LubeOut predittivo (stima esaurimento lubrificante)*
-- [x] Status bar chart (7-day trend) / *Grafico barre stato (trend 7 giorni)*
-- [x] Hours/cycles metrics with VipAir micropump aggregation / *Metriche ore/cicli con aggregazione micropompe VipAir*
-- [x] Deployed to app.dropsa.app/v2/ / *Distribuito su app.dropsa.app/v2/*
+> **Note:** These features were prototyped in the discontinued React v2 experiment and are the target backlog for the Angular dashboard. / *Queste funzionalità sono state prototipate nell'esperimento React v2 dismesso e sono il backlog target per il dashboard Angular.*
+
+- [ ] Dark theme glass UI with readable text / *UI vetro tema scuro con testo leggibile*
+- [ ] Clickable summary strip (Total/OK/Alarm/Warning/Inactive/Offline filters) / *Barra riepilogo cliccabile con filtri*
+- [ ] Full-width device card list with status, level gauge, cycle counters / *Lista schede dispositivo a larghezza piena*
+- [ ] Problems panel (alarm >2h, offline >24h detection) / *Pannello problemi (allarme >2h, offline >24h)*
+- [ ] Predictive LubeOut (estimates when lubricant runs out) / *LubeOut predittivo (stima esaurimento lubrificante)*
+- [ ] Status bar chart (7-day trend) / *Grafico barre stato (trend 7 giorni)*
+- [ ] Hours/cycles metrics with VipAir micropump aggregation / *Metriche ore/cicli con aggregazione micropompe VipAir*
 
 ### Next / Prossimo
 
@@ -300,7 +301,7 @@ This approach reduces risk significantly: instead of rewriting 127 REST endpoint
 
 *Effort: 10–15 days (core NestJS layer) + incremental Laravel migration / Impegno: 10–15 giorni (layer NestJS core) + migrazione incrementale Laravel*
 
-> **Frontend note:** The web frontend has already converged on **React 19+** (`drucs-v2`, in production at `app.dropsa.app/v2/`). References to Angular 18+ as a target are superseded — all new frontend work targets React 19+. The WebSocket gateway (Socket.IO) introduced in this phase is the critical enabler for the real-time fleet view in Mode 3 (mobile online), which currently relies on 60-second polling.
+> **Frontend note:** The web frontend is `frontend-web` (Angular 17). The WebSocket gateway (Socket.IO) introduced in this phase is the critical enabler for the real-time fleet view in Mode 3 (mobile online), which currently relies on 60-second polling.
 
 *Modernizzazione API tramite pattern Strangler Fig: NestJS affianca Laravel (non lo sostituisce in un big-bang). Laravel mantiene gli endpoint v1; NestJS aggiunge WebSocket, endpoint v2 e processing SQS asincrono. Effort ridotto da 25–35 giorni a 10–15 giorni per il layer core.*
 
@@ -308,7 +309,7 @@ This approach reduces risk significantly: instead of rewriting 127 REST endpoint
 
 1. **Device-type agnostic** — the API knows "devices" with "parameters" and "telemetry streams", not "lubrication pumps". Product logic lives in configuration, not code.
 2. **Multi-tenant from day one** — companies, users, device groups scoped with proper authorization.
-3. **Backwards compatible** — Laravel v1 continues serving existing React (drucs-v2) + Flutter API contracts without interruption.
+3. **Backwards compatible** — Laravel v1 continues serving existing Angular (`frontend-web`) + Flutter API contracts without interruption.
 4. **WebSocket for real-time** — clients subscribe to device telemetry streams and receive live updates.
 
 **Database migration / Migrazione database:**
@@ -335,7 +336,7 @@ This approach reduces risk significantly: instead of rewriting 127 REST endpoint
 - [ ] Prisma schema + migrations / *Schema Prisma + migrazioni*
 
 **Laravel incremental migration (existing v1 endpoints):**
-- [ ] Laravel (`import-web-app`) continues serving v1 — React (drucs-v2) + Flutter API contracts unchanged / *Laravel continua a servire v1 — nessun impatto su React + Flutter*
+- [ ] Laravel (`import-web-app`) continues serving v1 — Angular (`frontend-web`) + Flutter API contracts unchanged / *Laravel continua a servire v1 — nessun impatto su Angular + Flutter*
 - [ ] Migrate 12 cron tasks to NestJS scheduled tasks or Lambda (incremental) / *Migrare 12 cron task (incrementale)*
 - [ ] Migrate 8 SQS jobs (general, emails, event-report, summary-report, device-events) (incremental) / *Migrare 8 job SQS (incrementale)*
 - [ ] Incremental deprecation — sunset each Laravel endpoint as the v2 NestJS equivalent is validated / *Deprecazione incrementale endpoint Laravel*
@@ -590,7 +591,7 @@ Calendar time: **~5–6 months** (accounting for testing, hardware validation, s
 | Current Repo | Fate | Replacement |
 |---|---|---|
 | `drucs-gateway-new` (Java) | Sunset after Phase 3 | Legacy Bridge (NestJS) + IoT Core |
-| `frontend-web` (Angular 17) | **Retired** — replaced by `drucs-v2` | `drucs-v2` (React 19+) — generic dashboard in Phase 6 |
+| `frontend-web` (Angular 17) | **Maintained** — primary web dashboard | Evolve to consume v2 API (NestJS) in Phase 4 |
 | `mobile` (Flutter) | Keep, update API calls | Phase 4 v1 compat layer → native v2 |
 | `drucs-iac` (Terraform) | Extend | Add IoT Core, TimescaleDB, new ECS services |
 | `import-web-app` (Laravel) | Sunset after Phase 4 | NestJS API (127 endpoints, 12 cron, 8 SQS jobs) |
@@ -613,7 +614,7 @@ Calendar time: **~5–6 months** (accounting for testing, hardware validation, s
 | Device state cache | DB read per request | **Redis HSET** `device:{id}` (sub-ms) |
 | Cache | Redis micro (no HA) | Redis HA (multi-AZ, encrypted) |
 | Real-time (clients) | SSE polling every 10s | **WebSocket** (Socket.IO, event-driven) |
-| Frontend | Angular 17 (retired — replaced by drucs-v2) | **React 19** + Vite + TanStack Query + shadcn/ui (already in production at app.dropsa.app/v2/) |
+| Frontend | Angular 17 | Angular 17 (maintained — update API client in Phase 4) | — |
 | Mobile | Flutter 3.32 | Flutter (updated API client) |
 | Device auth | AES shared key | X.509 mutual TLS |
 | Device firmware | ESP-AT + custom HTTP | ESP-AT MQTT or ESP-IDF custom |
@@ -631,8 +632,103 @@ Calendar time: **~5–6 months** (accounting for testing, hardware validation, s
 | ESP-AT MQTT support is limited | Medium | Medium | Fall back to custom ESP-IDF firmware (Phase 5b) |
 | OTA brick risk during firmware migration | Low | Critical | Bootloader always preserves last-known-good image |
 | TimescaleDB migration data loss | Low | High | Parallel-write during migration, verify before cutover |
-| React (drucs-v2) / Flutter breaks with new API | Medium | High | Laravel v1 continues serving existing API contracts; NestJS v2 endpoints are additive |
 | AWS IoT Core regional limits | Low | Medium | eu-west-2 supports 500K connections per account |
+
+---
+
+---
+
+## Appendix D: Cost Analysis / Analisi dei Costi
+
+# APPENDIX D: COST ANALYSIS / ANALISI DEI COSTI
+
+> **NEW IN V2 / NUOVO IN V2**
+
+## AWS IoT Core Pricing Model / Modello di Prezzi AWS IoT Core
+
+AWS IoT Core charges per message (billed in 5KB increments) and per connected device-minute.
+
+AWS IoT Core addebita per messaggio (fatturato in incrementi da 5KB) e per device-minuto connesso.
+
+| Pricing Component | Rate (estimated / stimato) |
+|------------------|--------------------------|
+| Connectivity / Connettività | $0.042 per million device-minutes |
+| Messaging / Messaggistica | $1.00 per million messages (5KB each) |
+| Rules Engine | $0.15 per million rules triggered |
+
+---
+
+## Estimated Monthly Costs / Costi Mensili Stimati
+
+> All figures are **estimated / stimato** and should be validated against current AWS pricing at time of deployment.
+
+### Scenario: 1,000 Devices, 60-Second Telemetry Interval / 1.000 Device, Intervallo Telemetria 60 Secondi
+
+| Component | Calculation | Monthly Cost |
+|-----------|-------------|-------------|
+| Connectivity (1k devices, 24/7) | 1,000 × 43,200 min × $0.042/M | ~$1.81 |
+| Messages (1k devices, 1 msg/60s, 24/7) | 1,000 × 43,200 × $1.00/M | ~$43.20 |
+| Rules Engine (1 rule per msg) | 43.2M × $0.15/M | ~$6.48 |
+| **Subtotal / Subtotale** | | **~$51/month** |
+
+### Scenario: 10,000 Devices, 60-Second Interval / 10.000 Device, Intervallo 60 Secondi
+
+| Component | Calculation | Monthly Cost |
+|-----------|-------------|-------------|
+| Connectivity | 10,000 × 43,200 × $0.042/M | ~$18.10 |
+| Messages | 10,000 × 43,200 × $1.00/M | ~$432 |
+| Rules Engine | 432M × $0.15/M | ~$64.80 |
+| **Subtotal / Subtotale** | | **~$515/month** |
+
+### Caution: Short Intervals Cost Exponentially More / Attenzione: Intervalli Brevi Costano Esponenzialmente Di Più
+
+| Interval | 1k devices / device | 10k devices / device |
+|----------|--------------------|--------------------|
+| 60s | ~$51/month | ~$515/month |
+| 30s | ~$95/month | ~$950/month |
+| 10s | ~$270/month | ~$2,700/month |
+| 5s (current heartbeat) | ~$535/month | ~$5,350/month |
+
+**Recommendation / Raccomandazione:** Enforce minimum 60-second telemetry interval in firmware for MQTT mode. Current 5,000ms heartbeat is for TCP polling and does not need to be replicated 1:1 in MQTT. / Applicare intervallo di telemetria minimo di 60 secondi nel firmware per la modalità MQTT. L'heartbeat attuale di 5.000ms è per il polling TCP e non deve essere replicato 1:1 in MQTT.
+
+---
+
+## Analytics Layer Additional Costs / Costi Aggiuntivi Layer Analytics
+
+| Service | Estimated Cost | Notes / Note |
+|---------|---------------|-------------|
+| Kinesis Data Streams (2 shards) | ~$25/month | Scales with throughput / Scala con throughput |
+| Amazon Timestream (1k devices, 60s) | ~$30/month | 30-day retention / Ritenzione 30 giorni |
+| S3 (Parquet archive, 1 year) | ~$5/month | Grows with time / Cresce nel tempo |
+| Athena (ad-hoc queries) | ~$5/month | $5 per TB scanned / $5 per TB scansionato |
+| SageMaker (inference endpoint) | ~$35/month | ml.t3.medium / |
+| **Analytics Subtotal** | **~$100/month** | **+65% of IoT Core base cost** |
+
+---
+
+## Break-Even Analysis / Analisi Break-Even
+
+**AWS IoT Core vs. Self-Managed Mosquitto on ECS:**
+
+```
+Self-managed Mosquitto (ECS + NLB + ops overhead):
+  Fixed cost / Costo fisso: ~$150-200/month regardless of device count
+                             indipendentemente dal numero di device
+
+AWS IoT Core crossover point / Punto di crossover:
+  At 60s interval: IoT Core cheaper below ~3,000 devices
+                   IoT Core più economico sotto ~3.000 device
+  At 30s interval: IoT Core cheaper below ~1,500 devices
+
+Recommendation / Raccomandazione:
+  < 3,000 devices: AWS IoT Core (fully managed, no ops)
+  > 5,000 devices: Evaluate self-managed Mosquitto on ECS
+  2,000 devices (current): AWS IoT Core recommended
+```
+
+---
+
+## Current Infrastructure Cost Baseline / Baseline Costi Infrastruttura Attuale
 
 ---
 
